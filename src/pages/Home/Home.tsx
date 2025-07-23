@@ -146,29 +146,60 @@ const Home = () => {
               >
                 Experience the thrill of sports amidst scenic mountain views.
               </Typography>
-              <Button 
-                variant="contained" 
-                size="large"
-                onClick={handleOpenSportModal}
-                sx={{ 
-                  py: { xs: 1.5, md: 2 }, 
-                  px: { xs: 3, md: 4 },
-                  borderRadius: 3,
-                  bgcolor: 'primary.main',
-                  color: 'white',
-                  fontWeight: 700,
-                  fontSize: { xs: '1rem', md: '1.25rem' },
-                  textTransform: 'none',
-                  '&:hover': {
-                    bgcolor: 'primary.dark',
-                    transform: 'translateY(-2px)',
-                    boxShadow: '0 12px 20px rgba(0,0,0,0.2)',
-                  },
-                  transition: 'all 0.3s ease-in-out',
-                }}
+              <Stack 
+                direction={{ xs: 'column', sm: 'row' }} 
+                spacing={2} 
+                sx={{ mt: 2 }}
               >
-                Book
-              </Button>
+                <Button 
+                  variant="contained" 
+                  size="large"
+                  onClick={handleOpenSportModal}
+                  sx={{ 
+                    py: { xs: 1.5, md: 2 }, 
+                    px: { xs: 3, md: 4 },
+                    borderRadius: 3,
+                    bgcolor: 'primary.main',
+                    color: 'white',
+                    fontWeight: 700,
+                    fontSize: { xs: '1rem', md: '1.25rem' },
+                    textTransform: 'none',
+                    '&:hover': {
+                      bgcolor: 'primary.dark',
+                      transform: 'translateY(-2px)',
+                      boxShadow: '0 12px 20px rgba(0,0,0,0.2)',
+                    },
+                    transition: 'all 0.3s ease-in-out',
+                  }}
+                >
+                  Book Now
+                </Button>
+                
+                <Button 
+                  variant="outlined" 
+                  size="large"
+                  onClick={() => window.open('https://www.google.com/maps/dir/19.0724792,72.8887125/Gat+no+69+%2F32,+Turf+N+Lonavala,+Railway+station,+boraj+road,+near+Malavli,+Malavli,+Lonavala,+Maharashtra+410401/@18.9074373,72.5100978,9z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x3bc2ab70d00a1c5f:0xe9c8a48745dd469c!2m2!1d73.4835825!2d18.7451839?entry=ttu&g_ep=EgoyMDI1MDcyMS4wIKXMDSoASAFQAw%3D%3D', '_blank')}
+                  sx={{ 
+                    py: { xs: 1.5, md: 2 }, 
+                    px: { xs: 3, md: 4 },
+                    borderRadius: 3,
+                    borderColor: 'rgba(255,255,255,0.5)',
+                    color: 'white',
+                    fontWeight: 600,
+                    fontSize: { xs: '1rem', md: '1.25rem' },
+                    textTransform: 'none',
+                    '&:hover': {
+                      borderColor: 'white',
+                      bgcolor: 'rgba(255,255,255,0.1)',
+                      transform: 'translateY(-2px)',
+                      boxShadow: '0 12px 20px rgba(255,255,255,0.1)',
+                    },
+                    transition: 'all 0.3s ease-in-out',
+                  }}
+                >
+                  View Location
+                </Button>
+              </Stack>
             </Box>
           </motion.div>
         </Container>
