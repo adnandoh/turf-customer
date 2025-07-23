@@ -14,11 +14,13 @@ import {
   Typography, 
   useTheme,
   useMediaQuery,
+  Fab,
 } from '@mui/material';
 import { 
   SportsCricket as CricketIcon,
   SportsBaseball as PickleballIcon,
   Close as CloseIcon,
+  WhatsApp as WhatsAppIcon,
 } from '@mui/icons-material';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
@@ -54,6 +56,23 @@ const Home = () => {
 
   return (
     <Box>
+      {/* WhatsApp Button */}
+      <Fab
+        color="success"
+        aria-label="whatsapp"
+        sx={{
+          position: 'fixed',
+          bottom: 20,
+          right: 20,
+          zIndex: 1000,
+        }}
+        href="https://wa.me/8468942754"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <WhatsAppIcon />
+      </Fab>
+      
       {/* Hero Section */}
       <Box 
         sx={{ 

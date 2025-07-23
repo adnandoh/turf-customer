@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Define the base URL for the API from environment variables
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://turf-backend-production.up.railway.app';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
 
 // Create an axios instance with default config
 const api = axios.create({
@@ -9,6 +9,7 @@ const api = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
+  withCredentials: true, // Important for CORS with credentials
   timeout: parseInt(import.meta.env.VITE_API_TIMEOUT || '10000'),
 });
 
@@ -39,6 +40,7 @@ export interface Slot {
   start_time_formatted?: string;
   end_time_formatted?: string;
   is_blocked: boolean;
+  block_reason?: string;
   is_booked?: boolean;
   user_name?: string;
   price?: number;

@@ -377,7 +377,7 @@ const BookingPage = () => {
                 fontWeight={600} 
                 sx={{ 
                   ml: 2,
-                  color: 'primary.main'
+                  color: slots.length > 0 ? 'primary.main' : 'error.main'
                 }}
               >
                 {slots.length}
@@ -390,6 +390,32 @@ const BookingPage = () => {
               </Typography>
             </Box>
           </Box>
+          
+          {/* Show blocked date message if no slots available */}
+          {!loading && slots.length === 0 && (
+            <Card sx={{ 
+              bgcolor: 'error.light', 
+              color: 'error.contrastText',
+              mb: 3,
+              border: '1px solid',
+              borderColor: 'error.main'
+            }}>
+              <CardContent sx={{ py: 2 }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+                  <InfoIcon sx={{ mr: 1, color: 'error.main' }} />
+                  <Typography variant="h6" fontWeight={600} color="error.main">
+                    Date Not Available
+                  </Typography>
+                </Box>
+                <Typography variant="body1" color="text.primary">
+                  This date has been blocked for maintenance or special events.
+                </Typography>
+                <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+                  Please select a different date to view available slots.
+                </Typography>
+              </CardContent>
+            </Card>
+          )}
         </Box>
 
         {/* Time Slots */}
