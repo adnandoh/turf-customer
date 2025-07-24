@@ -378,17 +378,24 @@ const Layout = ({ children }: LayoutProps) => {
             {isMobile ? (
               <IconButton
                 color="inherit"
-                aria-label="open drawer"
+                aria-label="open navigation menu"
                 edge="start"
                 onClick={handleDrawerToggle}
-                sx={{ color: 'text.primary' }}
+                sx={{ 
+                  color: 'text.primary',
+                  bgcolor: 'rgba(56, 142, 60, 0.1)',
+                  borderRadius: 2,
+                  '&:hover': {
+                    bgcolor: 'rgba(56, 142, 60, 0.2)',
+                  }
+                }}
               >
                 <MenuIcon />
               </IconButton>
             ) : (
               <Box sx={{ 
                 display: 'flex',
-                gap: { xs: 2, md: 4 },
+                gap: { xs: 1, md: 2 },
                 alignItems: 'center',
               }}>
                 {navItems.map((item) => (
@@ -398,22 +405,25 @@ const Layout = ({ children }: LayoutProps) => {
                     to={item.path}
                     sx={{
                       color: location.pathname === item.path ? 'primary.main' : 'text.primary',
-                      fontSize: { xs: '1rem', md: '1.1rem' },
+                      fontSize: { xs: '0.95rem', md: '1rem' },
                       fontWeight: location.pathname === item.path ? 700 : 500,
                       textTransform: 'none',
                       position: 'relative',
+                      px: 2,
+                      py: 1,
+                      borderRadius: 2,
                       '&:after': {
                         content: '""',
                         position: 'absolute',
                         width: location.pathname === item.path ? '100%' : '0',
                         height: '2px',
-                        bottom: -4,
+                        bottom: 0,
                         left: 0,
                         backgroundColor: 'primary.main',
                         transition: 'width 0.3s ease-in-out',
                       },
                       '&:hover': {
-                        backgroundColor: 'transparent',
+                        backgroundColor: 'rgba(56, 142, 60, 0.05)',
                         '&:after': {
                           width: '100%',
                         },
@@ -423,6 +433,33 @@ const Layout = ({ children }: LayoutProps) => {
                     {item.text}
                   </Button>
                 ))}
+                
+                {/* Book Now Button */}
+                <Button
+                  variant="contained"
+                  component={RouterLink}
+                  to="/booking/cricket"
+                  sx={{
+                    ml: 2,
+                    px: 3,
+                    py: 1,
+                    borderRadius: 3,
+                    background: colors.gradient.primary,
+                    color: 'white',
+                    fontWeight: 600,
+                    fontSize: '0.95rem',
+                    textTransform: 'none',
+                    boxShadow: '0 4px 12px rgba(56, 142, 60, 0.3)',
+                    '&:hover': {
+                      background: colors.gradient.secondary,
+                      boxShadow: '0 6px 16px rgba(56, 142, 60, 0.4)',
+                      transform: 'translateY(-1px)',
+                    },
+                    transition: 'all 0.3s ease',
+                  }}
+                >
+                  Book Now
+                </Button>
               </Box>
             )}
           </Toolbar>

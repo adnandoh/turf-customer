@@ -32,6 +32,7 @@ import { format, addDays, isSameDay } from 'date-fns';
 import { motion } from 'framer-motion';
 import { useBooking } from '../../contexts/BookingContext';
 import { useSnackbar } from 'notistack';
+import SEO from '../../components/SEO';
 
 // Enhanced Sports/Turf theme colors
 const colors = {
@@ -235,8 +236,20 @@ const BookingPage = () => {
     );
   };
 
+  const sportName = sportType === 'cricket' ? 'Cricket' : 'Pickleball';
+  const sportDescription = sportType === 'cricket' 
+    ? 'Book cricket field slots in Lonavala with TurfBook. Choose from morning, afternoon, evening, and midnight slots. Premium cricket ground with scenic mountain views.'
+    : 'Book pickleball court slots in Lonavala with TurfBook. Professional pickleball courts available 24/7. Choose your preferred time slot and book instantly.';
+
   return (
-    <Box sx={{ bgcolor: colors.background.default, minHeight: '100vh', pb: 4 }}>
+    <>
+      <SEO
+        title={`${sportName} Booking`}
+        description={sportDescription}
+        keywords={`${sportType} booking lonavala, ${sportType} court rental, ${sportType} ground booking, sports facility ${sportType}, turf ${sportType} booking`}
+        url={`https://turfbook.com/booking/${sportType}`}
+      />
+      <Box sx={{ bgcolor: colors.background.default, minHeight: '100vh', pb: 4 }}>
       {/* Call Button */}
       <Fab
         color="secondary"

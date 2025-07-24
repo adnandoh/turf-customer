@@ -17,6 +17,7 @@ import { useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
 import { useBooking } from '../../contexts/BookingContext';
 import { useSnackbar } from 'notistack';
+import SEO from '../../components/SEO';
 
 // Enhanced Sports/Turf theme colors
 const colors = {
@@ -175,7 +176,15 @@ const CheckoutPage = () => {
   };
 
   return (
-    <Box sx={{ py: 4, bgcolor: colors.background.default, minHeight: '100vh' }}>
+    <>
+      <SEO
+        title="Checkout"
+        description="Complete your sports facility booking at TurfBook. Secure checkout process for cricket and pickleball court reservations in Lonavala. Instant confirmation upon payment."
+        keywords="turf booking checkout, sports facility payment, cricket court booking payment, pickleball booking checkout"
+        url="https://turfbook.com/checkout"
+        noIndex={true}
+      />
+      <Box sx={{ py: 4, bgcolor: colors.background.default, minHeight: '100vh' }}>
       {/* Call Button */}
       <Fab
         color="secondary"

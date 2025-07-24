@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Container, Typography, useTheme, Fab, Paper, Grid as MuiGrid } from '@mui/material';
 import { WhatsApp as WhatsAppIcon, Phone as PhoneIcon, LocationOn as LocationIcon, Email as EmailIcon } from '@mui/icons-material';
 import { motion } from 'framer-motion';
+import SEO from '../../components/SEO';
 
 // Enhanced Sports/Turf theme colors
 const colors = {
@@ -44,7 +45,15 @@ const Contact = () => {
   const theme = useTheme();
 
   return (
-    <Box sx={{ bgcolor: colors.background.default, minHeight: '100vh' }}>
+    <>
+      <SEO
+        title="Contact Us"
+        description="Contact TurfBook for cricket and pickleball court bookings in Lonavala. Call +91 84689 42754 or WhatsApp for instant booking confirmation. Located at Gat no 69/32, near Malavli Railway Station."
+        keywords="contact turfbook, turf booking lonavala contact, cricket ground booking contact, sports facility contact lonavala, turf rental contact number"
+        type="business.business"
+        url="https://turfbook.com/contact"
+      />
+      <Box sx={{ bgcolor: colors.background.default, minHeight: '100vh' }}>
       {/* Call Button */}
       <Fab
         color="secondary"

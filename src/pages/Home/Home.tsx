@@ -33,6 +33,7 @@ import {
 } from '@mui/icons-material';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import SEO from '../../components/SEO';
 
 // Enhanced Sports/Turf theme colors
 const colors = {
@@ -112,7 +113,15 @@ const Home = () => {
   };
 
   return (
-    <Box>
+    <>
+      <SEO
+        title="Home"
+        description="Book premium cricket and pickleball courts in Lonavala. TurfBook offers world-class sports facilities with scenic mountain views. Available 24/7 with instant confirmation. Rates from ₹700/hour."
+        keywords="turf booking lonavala, cricket ground booking, pickleball court rental, sports facility lonavala, turf rental mumbai pune, outdoor sports booking"
+        type="website"
+        url="https://turfbook.com"
+      />
+      <Box>
       {/* Call Button */}
       <Fab
         color="secondary"

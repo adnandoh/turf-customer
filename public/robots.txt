@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://turfbook.com/sitemap.xml
+
+# Disallow checkout and admin pages
+Disallow: /checkout
+Disallow: /admin
+
+# Allow important pages
+Allow: /
+Allow: /about
+Allow: /contact
+Allow: /booking/cricket
+Allow: /booking/pickleball
+
+# Crawl delay
+Crawl-delay: 1

@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Container, Typography, useTheme, Fab } from '@mui/material';
 import { WhatsApp as WhatsAppIcon, Phone as PhoneIcon } from '@mui/icons-material';
 import { motion } from 'framer-motion';
+import SEO from '../../components/SEO';
 
 // Enhanced Sports/Turf theme colors
 const colors = {
@@ -44,7 +45,14 @@ const About = () => {
   const theme = useTheme();
 
   return (
-    <Box sx={{ bgcolor: colors.background.default, minHeight: '100vh' }}>
+    <>
+      <SEO
+        title="About Us"
+        description="Learn about TurfBook - Lonavala's premier sports destination. We offer world-class cricket and pickleball facilities with scenic mountain views. Discover our story, mission, and commitment to providing exceptional sports experiences."
+        keywords="about turfbook, lonavala sports facility, cricket ground lonavala, pickleball court lonavala, sports destination maharashtra"
+        url="https://turfbook.com/about"
+      />
+      <Box sx={{ bgcolor: colors.background.default, minHeight: '100vh' }}>
       {/* Call Button */}
       <Fab
         color="secondary"
