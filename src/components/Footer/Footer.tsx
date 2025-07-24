@@ -55,14 +55,12 @@ const Footer = () => {
     { title: 'Company', links: [
       { name: 'About', path: '/about' },
       { name: 'Contact', path: '/contact' },
+      { name: 'Gallery', path: '/gallery' },
     ]},
-    { title: 'Sports', links: [
-      { name: 'Cricket', path: '/cricket' },
-      { name: 'Pickleball', path: '/pickleball' },
-    ]},
-    { title: 'Legal', links: [
-      { name: 'Privacy Policy', path: '/privacy' },
-      { name: 'Terms of Service', path: '/terms' },
+    { title: 'Services', links: [
+      { name: 'Amenities', path: '/amenities' },
+      { name: 'FAQ', path: '/faq' },
+      { name: 'Booking Policy', path: '/booking-policy' },
     ]},
   ];
 

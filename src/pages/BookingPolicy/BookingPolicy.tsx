@@ -242,48 +242,7 @@ const BookingPolicy = () => {
                 </Paper>
               </MuiGrid>
 
-              {/* Rain & Closure Policy */}
-              <MuiGrid size={{ xs: 12, md: 6 }}>
-                <Paper
-                  sx={{
-                    p: 4,
-                    borderRadius: 4,
-                    boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
-                    border: `2px solid ${colors.accent.light}`,
-                    height: '100%',
-                  }}
-                >
-                  <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
-                    <RainIcon sx={{ color: colors.accent.main, mr: 2, fontSize: 32 }} />
-                    <Typography variant="h5" fontWeight={700} color={colors.text.primary}>
-                      🌧 Rain & Turf Closure
-                    </Typography>
-                  </Box>
-                  <Typography variant="body1" color={colors.text.primary} sx={{ mb: 2, lineHeight: 1.7 }}>
-                    In the event of rain or unforeseen turf closure, we offer:
-                  </Typography>
-                  <List>
-                    <ListItem sx={{ px: 0 }}>
-                      <ListItemIcon>
-                        <CheckIcon sx={{ color: colors.accent.main }} />
-                      </ListItemIcon>
-                      <ListItemText 
-                        primary="Full refund"
-                        primaryTypographyProps={{ fontWeight: 500 }}
-                      />
-                    </ListItem>
-                    <ListItem sx={{ px: 0 }}>
-                      <ListItemIcon>
-                        <CheckIcon sx={{ color: colors.accent.main }} />
-                      </ListItemIcon>
-                      <ListItemText 
-                        primary="Free rescheduling to any available slot"
-                        primaryTypographyProps={{ fontWeight: 500 }}
-                      />
-                    </ListItem>
-                  </List>
-                </Paper>
-              </MuiGrid>
+
 
               {/* Refund Processing */}
               <MuiGrid size={{ xs: 12, md: 6 }}>

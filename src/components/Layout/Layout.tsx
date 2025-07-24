@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode, useState, useEffect } from 'react';
 import { 
   AppBar, 
   Box, 
@@ -17,6 +17,8 @@ import {
   Divider,
   Avatar,
   Slide,
+  Fab,
+  Tooltip,
 } from '@mui/material';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { 
@@ -33,6 +35,7 @@ import {
   Help as FAQIcon,
   SportsHandball as AmenitiesIcon,
   Policy as PolicyIcon,
+  KeyboardArrowUp as ArrowUpIcon,
 } from '@mui/icons-material';
 import { motion, AnimatePresence } from 'framer-motion';
 import Footer from '../Footer/Footer';
@@ -105,6 +108,25 @@ const Layout = ({ children }: LayoutProps) => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  // Show/hide scroll to top button based on scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Scroll to top function
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -716,6 +738,45 @@ const Layout = ({ children }: LayoutProps) => {
       
       {/* WhatsApp Chat Button */}
       <WhatsAppChat />
+      
+      {/* Global Scroll to Top Button */}
+      {showScrollTop && (
+        <Tooltip title="Scroll to Top" placement="left">
+          <Fab
+            color="default"
+            aria-label="scroll to top"
+            onClick={scrollToTop}
+            sx={{
+              position: 'fixed',
+              bottom: 160,
+              right: 20,
+              zIndex: 1000,
+              backgroundColor: colors.secondary.main,
+              color: 'white',
+              boxShadow: `0 4px 14px rgba(255, 87, 34, 0.25)`,
+              '&:hover': {
+                backgroundColor: colors.secondary.dark,
+                transform: 'scale(1.1)',
+                boxShadow: `0 6px 18px rgba(255, 87, 34, 0.35)`,
+              },
+              transition: 'all 0.3s ease',
+              animation: 'fadeInUp 0.3s ease-in-out',
+              '@keyframes fadeInUp': {
+                '0%': {
+                  opacity: 0,
+                  transform: 'translateY(20px)',
+                },
+                '100%': {
+                  opacity: 1,
+                  transform: 'translateY(0)',
+                },
+              },
+            }}
+          >
+            <ArrowUpIcon />
+          </Fab>
+        </Tooltip>
+      )}
     </Box>
   );
 };
