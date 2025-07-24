@@ -29,9 +29,14 @@ import {
   SportsBaseball as PickleballIcon,
   Phone as PhoneIcon,
   WhatsApp as WhatsAppIcon,
+  PhotoLibrary as GalleryIcon,
+  Help as FAQIcon,
+  SportsHandball as AmenitiesIcon,
+  Policy as PolicyIcon,
 } from '@mui/icons-material';
 import { motion, AnimatePresence } from 'framer-motion';
 import Footer from '../Footer/Footer';
+import WhatsAppChat from '../WhatsAppChat';
 
 // Enhanced Sports/Turf theme colors
 const colors = {
@@ -78,12 +83,16 @@ interface NavItem {
 const navItems: NavItem[] = [
   { text: 'Home', path: '/', icon: <HomeIcon /> },
   { text: 'About', path: '/about', icon: <AboutIcon /> },
+  { text: 'Amenities', path: '/amenities', icon: <AmenitiesIcon /> },
+  { text: 'Gallery', path: '/gallery', icon: <GalleryIcon /> },
   { text: 'Contact', path: '/contact', icon: <ContactIcon /> },
+  { text: 'FAQ', path: '/faq', icon: <FAQIcon /> },
+  { text: 'Policy', path: '/booking-policy', icon: <PolicyIcon /> },
 ];
 
 const sportsItems = [
-  { text: 'Cricket Booking', path: '/booking/cricket', icon: <CricketIcon /> },
-  { text: 'Pickleball Booking', path: '/booking/pickleball', icon: <PickleballIcon /> },
+  { text: 'Cricket Booking', action: 'tel:+918468942754', icon: <CricketIcon /> },
+  { text: 'Pickleball Booking', action: 'tel:+918468942754', icon: <PickleballIcon /> },
 ];
 
 const contactItems = [
@@ -227,8 +236,8 @@ const Layout = ({ children }: LayoutProps) => {
               transition={{ delay: (navItems.length + index) * 0.1 }}
             >
               <ListItem
-                component={RouterLink}
-                to={item.path}
+                component="a"
+                href={item.action}
                 onClick={handleDrawerToggle}
                 sx={{
                   borderRadius: 3,
@@ -437,8 +446,8 @@ const Layout = ({ children }: LayoutProps) => {
                 {/* Book Now Button */}
                 <Button
                   variant="contained"
-                  component={RouterLink}
-                  to="/booking/cricket"
+                  component="a"
+                  href="tel:+918468942754"
                   sx={{
                     ml: 2,
                     px: 3,
@@ -604,8 +613,8 @@ const Layout = ({ children }: LayoutProps) => {
                   {sportsItems.map((item, index) => (
                     <ListItem
                       key={item.text}
-                      component={RouterLink}
-                      to={item.path}
+                      component="a"
+                      href={item.action}
                       onClick={handleDrawerToggle}
                       sx={{
                         borderRadius: 2,
@@ -704,6 +713,9 @@ const Layout = ({ children }: LayoutProps) => {
       <Box>
         <Footer />
       </Box>
+      
+      {/* WhatsApp Chat Button */}
+      <WhatsAppChat />
     </Box>
   );
 };

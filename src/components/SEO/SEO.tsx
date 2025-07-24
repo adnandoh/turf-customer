@@ -30,7 +30,7 @@ const SEO: React.FC<SEOProps> = ({
 }) => {
   const siteTitle = 'TurfBook - Premium Sports Booking in Lonavala';
   const fullTitle = title === 'Home' ? siteTitle : `${title} | ${siteTitle}`;
-  const fullUrl = canonicalUrl || `${url}${window.location.pathname}`;
+  const fullUrl = canonicalUrl || url;
   const fullImage = image.startsWith('http') ? image : `${url}${image}`;
 
   return (

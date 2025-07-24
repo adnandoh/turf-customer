@@ -1,6 +1,6 @@
 import React from 'react';
-import { Box, Container, Typography, useTheme, Fab, Paper, Grid as MuiGrid } from '@mui/material';
-import { WhatsApp as WhatsAppIcon, Phone as PhoneIcon, LocationOn as LocationIcon, Email as EmailIcon } from '@mui/icons-material';
+import { Box, Container, Typography, Paper, Grid as MuiGrid, Button, Chip } from '@mui/material';
+import { Phone as PhoneIcon, LocationOn as LocationIcon, Email as EmailIcon, Schedule as ScheduleIcon, Language as WebsiteIcon, WhatsApp as WhatsAppIcon } from '@mui/icons-material';
 import { motion } from 'framer-motion';
 import SEO from '../../components/SEO';
 
@@ -42,8 +42,6 @@ const fadeIn = {
 };
 
 const Contact = () => {
-  const theme = useTheme();
-
   return (
     <>
       <SEO
@@ -54,55 +52,6 @@ const Contact = () => {
         url="https://turfbook.com/contact"
       />
       <Box sx={{ bgcolor: colors.background.default, minHeight: '100vh' }}>
-      {/* Call Button */}
-      <Fab
-        color="secondary"
-        aria-label="call"
-        sx={{
-          position: 'fixed',
-          bottom: 90,
-          right: 20,
-          zIndex: 1000,
-          backgroundColor: colors.accent.main,
-          color: 'white',
-          boxShadow: `0 4px 14px rgba(25, 118, 210, 0.25)`,
-          '&:hover': {
-            backgroundColor: colors.accent.dark,
-            transform: 'scale(1.1)',
-            boxShadow: `0 6px 18px rgba(25, 118, 210, 0.35)`,
-          },
-          transition: 'all 0.3s ease',
-        }}
-        href="tel:+918468942754"
-      >
-        <PhoneIcon />
-      </Fab>
-
-      {/* WhatsApp Button */}
-      <Fab
-        color="primary"
-        aria-label="whatsapp"
-        sx={{
-          position: 'fixed',
-          bottom: 20,
-          right: 20,
-          zIndex: 1000,
-          backgroundColor: colors.primary.main,
-          color: 'white',
-          boxShadow: `0 4px 14px rgba(56, 142, 60, 0.25)`,
-          '&:hover': {
-            backgroundColor: colors.primary.dark,
-            transform: 'scale(1.1)',
-            boxShadow: `0 6px 18px rgba(56, 142, 60, 0.35)`,
-          },
-          transition: 'all 0.3s ease',
-        }}
-        href="https://wa.me/8468942754"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <WhatsAppIcon />
-      </Fab>
 
       {/* Hero Section */}
       <Box 
@@ -121,13 +70,26 @@ const Contact = () => {
             left: 0,
             right: 0,
             bottom: 0,
-            background: colors.gradient.primary,
-            opacity: 0.1,
+            backgroundImage: 'url(https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2076&q=80)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            opacity: 0.2,
             zIndex: 0,
           },
+          '&::after': {
+            content: '""',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: colors.gradient.primary,
+            opacity: 0.8,
+            zIndex: 1,
+          }
         }}
       >
-        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
+        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2 }}>
           <motion.div
             initial="hidden"
             animate="visible"
@@ -138,64 +100,131 @@ const Contact = () => {
               component="h1"
               align="center"
               sx={{
-                fontWeight: 700,
-                mb: 2,
-                background: colors.gradient.primary,
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                color: colors.primary.main,
+                fontWeight: 800,
+                mb: 3,
+                color: 'white',
+                fontSize: { xs: '2rem', sm: '2.5rem', md: '3.5rem' },
+                textShadow: '0 2px 4px rgba(0,0,0,0.3)',
               }}
             >
-              Contact Us
+              📞 Get in Touch With Us
             </Typography>
             <Typography
               variant="h5"
               align="center"
               sx={{
-                color: colors.text.secondary,
-                maxWidth: '600px',
+                color: 'rgba(255,255,255,0.95)',
+                maxWidth: '700px',
                 mx: 'auto',
                 lineHeight: 1.6,
+                fontSize: { xs: '1.125rem', md: '1.5rem' },
+                textShadow: '0 1px 2px rgba(0,0,0,0.2)',
               }}
             >
-              Get in touch with us for bookings and inquiries
+              For Bookings, Queries & Support - We're here 24/7!
             </Typography>
           </motion.div>
         </Container>
       </Box>
 
       {/* Contact Information */}
-      <Container maxWidth="lg" sx={{ py: 6 }}>
+      <Container maxWidth="lg" sx={{ py: 8 }}>
         <motion.div
           initial="hidden"
           animate="visible"
           variants={fadeIn}
         >
-          <MuiGrid container spacing={4}>
+          <MuiGrid container spacing={4} sx={{ mb: 6 }}>
+            {/* Phone Contact */}
             <MuiGrid size={{ xs: 12, md: 6 }}>
               <Paper
                 sx={{
                   p: 4,
                   borderRadius: 4,
                   boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
-                  border: `2px solid ${colors.primary.light}`,
+                  border: `2px solid ${colors.accent.light}`,
+                  height: '100%',
                 }}
               >
                 <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
                   <PhoneIcon sx={{ color: colors.accent.main, mr: 2, fontSize: 32 }} />
                   <Typography variant="h5" fontWeight={600} color={colors.text.primary}>
-                    Call Us
+                    📱 Call / WhatsApp
                   </Typography>
                 </Box>
-                <Typography variant="h6" color={colors.primary.main} sx={{ mb: 1 }}>
-                  +91 84689 42754
+                <Typography variant="h6" color={colors.primary.main} sx={{ mb: 2 }}>
+                  8468942754
                 </Typography>
-                <Typography variant="body1" color={colors.text.secondary}>
+                <Typography variant="body1" color={colors.text.secondary} sx={{ mb: 2 }}>
                   Available 24/7 for bookings and support
                 </Typography>
+                <Button
+                  variant="contained"
+                  component="a"
+                  href="tel:+918468942754"
+                  sx={{
+                    mr: 2,
+                    mb: 1,
+                    bgcolor: colors.accent.main,
+                    '&:hover': { bgcolor: colors.accent.dark },
+                  }}
+                >
+                  Call Now
+                </Button>
+                <Button
+                  variant="contained"
+                  component="a"
+                  href="https://wa.me/8468942754"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{
+                    bgcolor: colors.primary.main,
+                    '&:hover': { bgcolor: colors.primary.dark },
+                  }}
+                >
+                  WhatsApp
+                </Button>
               </Paper>
             </MuiGrid>
 
+            {/* Email Contact */}
+            <MuiGrid size={{ xs: 12, md: 6 }}>
+              <Paper
+                sx={{
+                  p: 4,
+                  borderRadius: 4,
+                  boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
+                  border: `2px solid ${colors.secondary.light}`,
+                  height: '100%',
+                }}
+              >
+                <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
+                  <EmailIcon sx={{ color: colors.secondary.main, mr: 2, fontSize: 32 }} />
+                  <Typography variant="h5" fontWeight={600} color={colors.text.primary}>
+                    📧 Email
+                  </Typography>
+                </Box>
+                <Typography variant="h6" color={colors.primary.main} sx={{ mb: 2 }}>
+                  turfnlonavala@gmail.com
+                </Typography>
+                <Typography variant="body1" color={colors.text.secondary} sx={{ mb: 2 }}>
+                  For detailed inquiries and booking confirmations
+                </Typography>
+                <Button
+                  variant="contained"
+                  component="a"
+                  href="mailto:turfnlonavala@gmail.com"
+                  sx={{
+                    bgcolor: colors.secondary.main,
+                    '&:hover': { bgcolor: colors.secondary.dark },
+                  }}
+                >
+                  Send Email
+                </Button>
+              </Paper>
+            </MuiGrid>
+
+            {/* Website */}
             <MuiGrid size={{ xs: 12, md: 6 }}>
               <Paper
                 sx={{
@@ -203,53 +232,138 @@ const Contact = () => {
                   borderRadius: 4,
                   boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
                   border: `2px solid ${colors.primary.light}`,
+                  height: '100%',
                 }}
               >
                 <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
-                  <WhatsAppIcon sx={{ color: colors.primary.main, mr: 2, fontSize: 32 }} />
+                  <WebsiteIcon sx={{ color: colors.primary.main, mr: 2, fontSize: 32 }} />
                   <Typography variant="h5" fontWeight={600} color={colors.text.primary}>
-                    WhatsApp
+                    🌐 Website
                   </Typography>
                 </Box>
-                <Typography variant="h6" color={colors.primary.main} sx={{ mb: 1 }}>
-                  +91 84689 42754
+                <Typography variant="h6" color={colors.primary.main} sx={{ mb: 2 }}>
+                  www.turfngroup.com
                 </Typography>
-                <Typography variant="body1" color={colors.text.secondary}>
-                  Quick responses and instant booking confirmation
+                <Typography variant="body1" color={colors.text.secondary} sx={{ mb: 2 }}>
+                  Visit our website for more information and updates
                 </Typography>
+                <Button
+                  variant="contained"
+                  component="a"
+                  href="https://www.turfngroup.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{
+                    bgcolor: colors.primary.main,
+                    '&:hover': { bgcolor: colors.primary.dark },
+                  }}
+                >
+                  Visit Website
+                </Button>
               </Paper>
             </MuiGrid>
 
-            <MuiGrid size={12}>
+            {/* Business Hours */}
+            <MuiGrid size={{ xs: 12, md: 6 }}>
               <Paper
                 sx={{
                   p: 4,
                   borderRadius: 4,
                   boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
-                  border: `2px solid ${colors.primary.light}`,
+                  border: `2px solid ${colors.accent.light}`,
+                  height: '100%',
                 }}
               >
                 <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
-                  <LocationIcon sx={{ color: colors.secondary.main, mr: 2, fontSize: 32 }} />
+                  <ScheduleIcon sx={{ color: colors.accent.main, mr: 2, fontSize: 32 }} />
                   <Typography variant="h5" fontWeight={600} color={colors.text.primary}>
-                    Visit Us
+                    Business Hours
                   </Typography>
                 </Box>
-                <Typography variant="h6" color={colors.primary.main} sx={{ mb: 1 }}>
-                  Turf N Lonavala
-                </Typography>
-                <Typography variant="body1" color={colors.text.secondary} sx={{ mb: 2 }}>
-                  Gat no 69/32, Railway station, boraj road, near Malavli, Malavli, Lonavala, Maharashtra 410401
-                </Typography>
-                <Typography variant="body2" color={colors.text.secondary}>
-                  Located in the scenic hills of Lonavala with easy access from Mumbai and Pune
+                <Chip
+                  label="Open 24 Hours, 7 Days a Week"
+                  sx={{
+                    bgcolor: colors.primary.main,
+                    color: 'white',
+                    fontWeight: 600,
+                    fontSize: '1rem',
+                    py: 2,
+                    px: 1,
+                    mb: 2,
+                  }}
+                />
+                <Typography variant="body1" color={colors.text.secondary}>
+                  We're always open for your convenience! Book anytime, play anytime.
                 </Typography>
               </Paper>
             </MuiGrid>
           </MuiGrid>
+
+          {/* Location Section */}
+          <Paper
+            sx={{
+              p: 4,
+              borderRadius: 4,
+              boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
+              border: `2px solid ${colors.secondary.light}`,
+              mb: 6,
+            }}
+          >
+            <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
+              <LocationIcon sx={{ color: colors.secondary.main, mr: 2, fontSize: 32 }} />
+              <Typography variant="h5" fontWeight={600} color={colors.text.primary}>
+                Visit Us At
+              </Typography>
+            </Box>
+            <Typography variant="h6" color={colors.primary.main} sx={{ mb: 2 }}>
+              Turf N Lonavala Grounds
+            </Typography>
+            <Typography variant="body1" color={colors.text.secondary} sx={{ mb: 2 }}>
+              Lonavala, Maharashtra
+            </Typography>
+            <Typography variant="body2" color={colors.text.secondary} sx={{ mb: 3 }}>
+              Located in the scenic hills of Lonavala with easy access from Mumbai and Pune. 
+              Exact map location available - contact us for detailed directions.
+            </Typography>
+            <Button
+              variant="contained"
+              component="a"
+              href="https://www.google.com/maps/dir/19.0744702,72.8869927/Gat+no+69+%2F32,+Turf+N+Lonavala,+Railway+station,+boraj+road,+near+Malavli,+Malavli,+Lonavala,+Maharashtra+410401/@18.9891161,72.8523087,10z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x3bc2ab70d00a1c5f:0xe9c8a48745dd469c!2m2!1d73.4835825!2d18.7451839?entry=ttu&g_ep=EgoyMDI1MDcyMS4wIKXMDSoASAFQAw%3D%3D"
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{
+                bgcolor: colors.secondary.main,
+                '&:hover': { bgcolor: colors.secondary.dark },
+              }}
+            >
+              Get Directions
+            </Button>
+          </Paper>
+
+          {/* Booking Policy Section */}
+          <Paper
+            sx={{
+              p: 4,
+              borderRadius: 4,
+              boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
+              border: `2px solid ${colors.primary.light}`,
+              bgcolor: colors.primary.light + '10',
+            }}
+          >
+            <Typography variant="h5" fontWeight={700} color={colors.primary.dark} sx={{ mb: 3 }}>
+              📅 Need to Reschedule or Cancel?
+            </Typography>
+            <Typography variant="body1" color={colors.text.primary} sx={{ mb: 2, lineHeight: 1.7 }}>
+              We allow <strong>rescheduling up to 6 hours before your booked slot</strong>, and offer fair cancellation policies. 
+            </Typography>
+            <Typography variant="body1" color={colors.text.secondary} sx={{ lineHeight: 1.7 }}>
+              Learn more about our flexible booking terms by contacting us directly. We're here to make your sports experience as convenient as possible!
+            </Typography>
+          </Paper>
         </motion.div>
       </Container>
     </Box>
+    </>
   );
 };
 

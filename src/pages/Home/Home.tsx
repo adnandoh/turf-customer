@@ -1,38 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { 
   Box, 
   Button, 
-  Card,
-  CardContent,
   Container, 
-  Dialog,
-  DialogContent,
-  DialogTitle,
   Grid as MuiGrid,
-  IconButton,
   Stack, 
   Typography, 
   useTheme,
   useMediaQuery,
-  Fab,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
   Paper,
-  keyframes,
+  Fab,
+  Tooltip,
 } from '@mui/material';
 import { 
-  SportsCricket as CricketIcon,
-  SportsBaseball as PickleballIcon,
-  Close as CloseIcon,
   WhatsApp as WhatsAppIcon,
   Phone as PhoneIcon,
 } from '@mui/icons-material';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
 import SEO from '../../components/SEO';
 
 // Enhanced Sports/Turf theme colors
@@ -77,40 +61,9 @@ const slideIn = {
   visible: { opacity: 1, x: 0, transition: { duration: 0.6 } }
 };
 
-// Pulse animation for the "Booking Open Now" indicator
-const pulse = keyframes`
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.2);
-    opacity: 0.7;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-`;
-
 const Home = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const navigate = useNavigate();
-  const [openSportModal, setOpenSportModal] = useState(false);
-
-  const handleOpenSportModal = () => {
-    setOpenSportModal(true);
-  };
-
-  const handleCloseSportModal = () => {
-    setOpenSportModal(false);
-  };
-
-  const handleSportSelect = (sport: string) => {
-    handleCloseSportModal();
-    navigate(`/booking/${sport}`);
-  };
 
   return (
     <>
@@ -122,55 +75,6 @@ const Home = () => {
         url="https://turfbook.com"
       />
       <Box>
-      {/* Call Button */}
-      <Fab
-        color="secondary"
-        aria-label="call"
-        sx={{
-          position: 'fixed',
-          bottom: 90,
-          right: 20,
-          zIndex: 1000,
-          backgroundColor: colors.accent.main,
-          color: 'white',
-          boxShadow: `0 4px 14px rgba(25, 118, 210, 0.25)`,
-          '&:hover': {
-            backgroundColor: colors.accent.dark,
-            transform: 'scale(1.1)',
-            boxShadow: `0 6px 18px rgba(25, 118, 210, 0.35)`,
-          },
-          transition: 'all 0.3s ease',
-        }}
-        href="tel:+918468942754"
-      >
-        <PhoneIcon />
-      </Fab>
-
-      {/* WhatsApp Button */}
-      <Fab
-        color="primary"
-        aria-label="whatsapp"
-        sx={{
-          position: 'fixed',
-          bottom: 20,
-          right: 20,
-          zIndex: 1000,
-          backgroundColor: colors.primary.main,
-          color: 'white',
-          boxShadow: `0 4px 14px rgba(56, 142, 60, 0.25)`,
-          '&:hover': {
-            backgroundColor: colors.primary.dark,
-            transform: 'scale(1.1)',
-            boxShadow: `0 6px 18px rgba(56, 142, 60, 0.35)`,
-          },
-          transition: 'all 0.3s ease',
-        }}
-        href="https://wa.me/8468942754"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <WhatsAppIcon />
-      </Fab>
       
       {/* Hero Section */}
       <Box 
@@ -254,7 +158,8 @@ const Home = () => {
                 <Button 
                   variant="contained" 
                   size="large"
-                  onClick={handleOpenSportModal}
+                  component="a"
+                  href="tel:+918468942754"
                   sx={{ 
                     py: { xs: 1.5, md: 2 }, 
                     px: { xs: 3, md: 4 },
@@ -300,98 +205,7 @@ const Home = () => {
         </Container>
       </Box>
 
-      {/* Sport Selection Modal */}
-      <Dialog
-        open={openSportModal}
-        onClose={handleCloseSportModal}
-        maxWidth="xs"
-        fullWidth
-        PaperProps={{
-          sx: {
-            borderRadius: 4,
-            bgcolor: colors.background.paper,
-            overflow: 'hidden',
-          }
-        }}
-      >
-        <DialogTitle sx={{ 
-          p: { xs: 2, md: 3 },
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          borderBottom: '1px solid',
-          borderColor: 'divider',
-          bgcolor: colors.primary.main,
-          color: 'white',
-        }}>
-          <Typography variant="h6" component="div" fontWeight={600}>
-            Select Sport
-          </Typography>
-          <IconButton onClick={handleCloseSportModal} sx={{ color: 'white' }}>
-            <CloseIcon />
-          </IconButton>
-        </DialogTitle>
-        <DialogContent sx={{ p: { xs: 2, md: 3 }, bgcolor: colors.background.default }}>
-          <Stack spacing={3}>
-            <Button
-              variant="contained"
-              size="large"
-              startIcon={<CricketIcon />}
-              onClick={() => handleSportSelect('cricket')}
-              sx={{ 
-                py: { xs: 2, md: 2.5 },
-                px: { xs: 3, md: 4 },
-                justifyContent: 'flex-start',
-                borderRadius: 3,
-                bgcolor: colors.primary.main,
-                color: 'white',
-                fontWeight: 700,
-                fontSize: { xs: '1rem', md: '1.125rem' },
-                boxShadow: '0 8px 20px rgba(56, 142, 60, 0.3)',
-                '&:hover': {
-                  bgcolor: colors.primary.dark,
-                  transform: 'translateY(-2px) scale(1.02)',
-                  boxShadow: '0 12px 28px rgba(56, 142, 60, 0.4)',
-                },
-                '&:active': {
-                  transform: 'translateY(0) scale(0.98)',
-                },
-                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-              }}
-            >
-              Cricket
-            </Button>
-            <Button
-              variant="contained"
-              size="large"
-              startIcon={<PickleballIcon />}
-              onClick={() => handleSportSelect('pickleball')}
-              sx={{
-                py: { xs: 2, md: 2.5 },
-                px: { xs: 3, md: 4 },
-                justifyContent: 'flex-start',
-                borderRadius: 3,
-                bgcolor: colors.accent.main,
-                color: 'white',
-                fontWeight: 700,
-                fontSize: { xs: '1rem', md: '1.125rem' },
-                boxShadow: '0 8px 20px rgba(25, 118, 210, 0.3)',
-                '&:hover': {
-                  bgcolor: colors.accent.dark,
-                  transform: 'translateY(-2px) scale(1.02)',
-                  boxShadow: '0 12px 28px rgba(25, 118, 210, 0.4)',
-                },
-                '&:active': {
-                  transform: 'translateY(0) scale(0.98)',
-                },
-                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-              }}
-            >
-              Pickleball
-            </Button>
-          </Stack>
-        </DialogContent>
-      </Dialog>
+
 
       {/* Rate Card */}
       <Box sx={{ py: { xs: 4, md: 8 }, bgcolor: colors.background.default }}>
@@ -588,94 +402,89 @@ const Home = () => {
               </Stack>
             </Box>
             
-            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mt: 5 }}>
-              <Button 
-                variant="contained"
-                size="large"
-                onClick={handleOpenSportModal}
-                sx={{ 
-                  py: { xs: 2.5, sm: 3, md: 3.5 }, 
-                  px: { xs: 6, sm: 8, md: 12 },
-                  borderRadius: 5,
-                  background: colors.gradient.primary,
-                  boxShadow: '0 12px 32px rgba(56, 142, 60, 0.4)',
-                  fontWeight: 800,
-                  fontSize: { xs: '1.125rem', sm: '1.25rem', md: '1.5rem' },
-                  textTransform: 'none',
-                  color: 'white',
-                  position: 'relative',
-                  overflow: 'hidden',
-                  border: `3px solid ${colors.primary.light}`,
-                  '&::before': {
-                    content: '""',
-                    position: 'absolute',
-                    top: 0,
-                    left: '-100%',
-                    width: '100%',
-                    height: '100%',
-                    background: colors.gradient.secondary,
-                    transition: 'left 0.4s ease',
-                    zIndex: 0,
-                  },
-                  '&:hover': {
-                    transform: 'translateY(-4px) scale(1.03)',
-                    boxShadow: '0 20px 40px rgba(56, 142, 60, 0.5)',
-                    borderColor: colors.secondary.main,
-                    '&::before': {
-                      left: 0,
-                    },
-                  },
-                  '&:active': {
-                    transform: 'translateY(-2px) scale(1.01)',
-                  },
-                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                  '& > span': {
-                    position: 'relative',
-                    zIndex: 1,
-                  }
-                }}
-              >
-                <Box component="span" sx={{ position: 'relative', zIndex: 1 }}>
-                  Book Your Slot Now
-                </Box>
-              </Button>
-              
-              <Typography 
-                variant="body1" 
-                sx={{ 
-                  mt: 2,
-                  color: colors.text.secondary,
-                  textAlign: 'center',
-                  fontWeight: 500,
-                  fontSize: { xs: '0.875rem', md: '1rem' }
-                }}
-              >
-                Available 24/7 • Cricket & Pickleball • Instant Confirmation
-              </Typography>
-              
-              <Box sx={{ 
-                display: 'flex', 
-                alignItems: 'center', 
-                gap: 1, 
-                mt: 1,
-                color: colors.primary.main,
-                fontSize: '0.875rem',
-                fontWeight: 600
-              }}>
-                <Box component="span" sx={{ 
-                  width: 8, 
-                  height: 8, 
-                  borderRadius: '50%', 
-                  bgcolor: colors.primary.main,
-                  animation: `${pulse} 2s infinite`
-                }} />
-                Booking Open Now
-              </Box>
-            </Box>
+
           </motion.div>
         </Container>
       </Box>
+
+      {/* Floating Action Buttons - Home Page Only */}
+      <Tooltip title="Call Now" placement="left">
+        <Fab
+          color="secondary"
+          aria-label="call"
+          sx={{
+            position: 'fixed',
+            bottom: 90,
+            right: 20,
+            zIndex: 1000,
+            backgroundColor: colors.accent.main,
+            color: 'white',
+            boxShadow: `0 4px 14px rgba(25, 118, 210, 0.25)`,
+            '&:hover': {
+              backgroundColor: colors.accent.dark,
+              transform: 'scale(1.1)',
+              boxShadow: `0 6px 18px rgba(25, 118, 210, 0.35)`,
+            },
+            transition: 'all 0.3s ease',
+            animation: 'bounce 2s infinite',
+            '@keyframes bounce': {
+              '0%, 20%, 50%, 80%, 100%': {
+                transform: 'translateY(0)',
+              },
+              '40%': {
+                transform: 'translateY(-10px)',
+              },
+              '60%': {
+                transform: 'translateY(-5px)',
+              },
+            },
+          }}
+          href="tel:+918468942754"
+        >
+          <PhoneIcon />
+        </Fab>
+      </Tooltip>
+
+      <Tooltip title="Chat on WhatsApp" placement="left">
+        <Fab
+          color="primary"
+          aria-label="whatsapp"
+          sx={{
+            position: 'fixed',
+            bottom: 20,
+            right: 20,
+            zIndex: 1000,
+            backgroundColor: '#25D366',
+            color: 'white',
+            boxShadow: `0 4px 14px rgba(37, 211, 102, 0.25)`,
+            '&:hover': {
+              backgroundColor: '#128C7E',
+              transform: 'scale(1.1)',
+              boxShadow: `0 6px 18px rgba(37, 211, 102, 0.35)`,
+            },
+            transition: 'all 0.3s ease',
+            animation: 'pulse 2s infinite',
+            '@keyframes pulse': {
+              '0%': {
+                boxShadow: '0 0 0 0 rgba(37, 211, 102, 0.7)',
+              },
+              '70%': {
+                boxShadow: '0 0 0 10px rgba(37, 211, 102, 0)',
+              },
+              '100%': {
+                boxShadow: '0 0 0 0 rgba(37, 211, 102, 0)',
+              },
+            },
+          }}
+          href="https://wa.me/8468942754?text=Hi,%20I%20want%20to%20book%20a%20slot%20at%20Turf%20N%20Lonavala!"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <WhatsAppIcon />
+        </Fab>
+      </Tooltip>
     </Box>
+    </>
   );
 };
 

@@ -8,9 +8,10 @@ import Layout from './components/Layout';
 import Home from './pages/Home/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
-import BookingPage from './pages/BookingPage/BookingPage';
-import CheckoutPage from './pages/CheckoutPage/CheckoutPage';
-import { BookingProvider } from './contexts/BookingContext';
+import BookingPolicy from './pages/BookingPolicy';
+import Amenities from './pages/Amenities';
+import Gallery from './pages/Gallery';
+import FAQ from './pages/FAQ';
 
 function App() {
   return (
@@ -18,19 +19,19 @@ function App() {
       <ThemeProvider>
         <CssBaseline />
         <SnackbarProvider maxSnack={3}>
-          <BookingProvider>
-            <Router>
-              <Layout>
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/about" element={<About />} />
-                  <Route path="/contact" element={<Contact />} />
-                  <Route path="/booking/:sportType" element={<BookingPage />} />
-                  <Route path="/checkout" element={<CheckoutPage />} />
-                </Routes>
-              </Layout>
-            </Router>
-          </BookingProvider>
+          <Router>
+            <Layout>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/booking-policy" element={<BookingPolicy />} />
+                <Route path="/amenities" element={<Amenities />} />
+                <Route path="/gallery" element={<Gallery />} />
+                <Route path="/faq" element={<FAQ />} />
+              </Routes>
+            </Layout>
+          </Router>
         </SnackbarProvider>
       </ThemeProvider>
     </HelmetProvider>
