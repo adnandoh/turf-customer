@@ -83,7 +83,7 @@ const Footer = () => {
     >
       <Container maxWidth="lg">
         <MuiGrid container spacing={isMobile ? 3 : 4}>
-          <MuiGrid item xs={12} sm={6} md={3}>
+          <MuiGrid size={{ xs: 12, sm: 6, md: 3 }}>
             <Typography
               variant="h6"
               sx={{
@@ -125,7 +125,7 @@ const Footer = () => {
           </MuiGrid>
 
           {/* Contact Information */}
-          <MuiGrid item xs={12} sm={6} md={3}>
+          <MuiGrid size={{ xs: 12, sm: 6, md: 3 }}>
             <Typography variant="subtitle2" color="text.primary" fontWeight={600} sx={{ mb: 2 }}>
               Contact Info
             </Typography>
@@ -169,7 +169,7 @@ const Footer = () => {
           </MuiGrid>
           
           {footerLinks.map((category) => (
-            <MuiGrid item xs={6} sm={4} md={2} key={category.title}>
+            <MuiGrid size={{ xs: 6, sm: 4, md: 2 }} key={category.title}>
               <Typography variant="subtitle2" color="text.primary" fontWeight={600} sx={{ mb: 2 }}>
                 {category.title}
               </Typography>
