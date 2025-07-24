@@ -9,12 +9,46 @@ import {
   Grid as MuiGrid,
   Divider,
   Backdrop,
-  CircularProgress
+  CircularProgress,
+  Fab
 } from '@mui/material';
+import { WhatsApp as WhatsAppIcon, Phone as PhoneIcon } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
 import { useBooking } from '../../contexts/BookingContext';
 import { useSnackbar } from 'notistack';
+
+// Enhanced Sports/Turf theme colors
+const colors = {
+  primary: {
+    main: '#388e3c', // Rich grass green
+    dark: '#2e7d32', // Deep forest green
+    light: '#66bb6a', // Vibrant light green
+  },
+  secondary: {
+    main: '#ff5722', // Bold orange-red
+    dark: '#d84315', // Deep orange
+    light: '#ff7043', // Bright orange
+  },
+  accent: {
+    main: '#1976d2', // Royal blue
+    dark: '#0d47a1', // Navy blue
+    light: '#42a5f5', // Sky blue
+  },
+  background: {
+    default: '#f8fffe', // Clean white with hint of green
+    paper: '#ffffff',
+  },
+  text: {
+    primary: '#1b2e35', // Deep charcoal
+    secondary: '#455a64', // Steel grey
+  },
+  gradient: {
+    primary: 'linear-gradient(135deg, #388e3c 0%, #66bb6a 100%)',
+    secondary: 'linear-gradient(45deg, #ff5722 30%, #d84315 90%)',
+    accent: 'linear-gradient(135deg, #1976d2 0%, #42a5f5 100%)',
+  }
+};
 
 // Helper function to format time for display
 const formatTimeDisplay = (time?: string): string => {
@@ -141,7 +175,56 @@ const CheckoutPage = () => {
   };
 
   return (
-    <Box sx={{ py: 4, bgcolor: 'background.default', minHeight: '100vh' }}>
+    <Box sx={{ py: 4, bgcolor: colors.background.default, minHeight: '100vh' }}>
+      {/* Call Button */}
+      <Fab
+        color="secondary"
+        aria-label="call"
+        sx={{
+          position: 'fixed',
+          bottom: 90,
+          right: 20,
+          zIndex: 1000,
+          backgroundColor: colors.accent.main,
+          color: 'white',
+          boxShadow: `0 4px 14px rgba(25, 118, 210, 0.25)`,
+          '&:hover': {
+            backgroundColor: colors.accent.dark,
+            transform: 'scale(1.1)',
+            boxShadow: `0 6px 18px rgba(25, 118, 210, 0.35)`,
+          },
+          transition: 'all 0.3s ease',
+        }}
+        href="tel:+918468942754"
+      >
+        <PhoneIcon />
+      </Fab>
+
+      {/* WhatsApp Button */}
+      <Fab
+        color="primary"
+        aria-label="whatsapp"
+        sx={{
+          position: 'fixed',
+          bottom: 20,
+          right: 20,
+          zIndex: 1000,
+          backgroundColor: colors.primary.main,
+          color: 'white',
+          boxShadow: `0 4px 14px rgba(56, 142, 60, 0.25)`,
+          '&:hover': {
+            backgroundColor: colors.primary.dark,
+            transform: 'scale(1.1)',
+            boxShadow: `0 6px 18px rgba(56, 142, 60, 0.35)`,
+          },
+          transition: 'all 0.3s ease',
+        }}
+        href="https://wa.me/8468942754"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <WhatsAppIcon />
+      </Fab>
       <Container maxWidth="md">
         <Box sx={{ mb: 4 }}>
           <Typography variant="h4" component="h1" fontWeight={700} gutterBottom>
@@ -294,7 +377,8 @@ const CheckoutPage = () => {
         <Box sx={{
           display: 'flex',
           justifyContent: 'space-between',
-          mt: 4
+          gap: 3,
+          mt: 5
         }}>
           <Button
             variant="outlined"
@@ -302,9 +386,27 @@ const CheckoutPage = () => {
             onClick={handleGoBack}
             disabled={isSubmitting}
             sx={{
-              py: 1.5,
-              px: 4,
-              borderRadius: 2
+              py: 2.5,
+              px: 6,
+              borderRadius: 4,
+              borderWidth: 2,
+              borderColor: colors.text.secondary,
+              color: colors.text.secondary,
+              fontWeight: 700,
+              fontSize: '1.125rem',
+              textTransform: 'none',
+              '&:hover': {
+                borderWidth: 2,
+                borderColor: colors.primary.main,
+                color: colors.primary.main,
+                bgcolor: 'rgba(56, 142, 60, 0.05)',
+                transform: 'translateY(-2px)',
+                boxShadow: '0 8px 20px rgba(0,0,0,0.1)',
+              },
+              '&:active': {
+                transform: 'translateY(0)',
+              },
+              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
             }}
           >
             Back
@@ -316,9 +418,28 @@ const CheckoutPage = () => {
             type="submit"
             disabled={isSubmitting}
             sx={{
-              py: 1.5,
-              px: 4,
-              borderRadius: 2
+              py: 2.5,
+              px: 6,
+              borderRadius: 4,
+              background: isSubmitting ? colors.text.secondary : colors.gradient.primary,
+              color: 'white',
+              fontWeight: 800,
+              fontSize: '1.125rem',
+              textTransform: 'none',
+              boxShadow: '0 8px 24px rgba(56, 142, 60, 0.3)',
+              '&:hover': {
+                background: isSubmitting ? colors.text.secondary : colors.gradient.secondary,
+                transform: isSubmitting ? 'none' : 'translateY(-2px)',
+                boxShadow: isSubmitting ? '0 8px 24px rgba(56, 142, 60, 0.3)' : '0 12px 32px rgba(56, 142, 60, 0.4)',
+              },
+              '&:active': {
+                transform: isSubmitting ? 'none' : 'translateY(0)',
+              },
+              '&:disabled': {
+                background: colors.text.secondary,
+                color: 'white',
+              },
+              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
             }}
           >
             {isSubmitting ? 'Processing...' : 'Confirm Booking'}

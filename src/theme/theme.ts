@@ -1,28 +1,65 @@
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
-import { deepPurple, amber, grey } from '@mui/material/colors';
+import { amber, grey } from '@mui/material/colors';
+
+// Enhanced Sports/Turf theme colors
+const turfColors = {
+  green: {
+    light: '#66bb6a',  // Vibrant light green
+    main: '#388e3c',   // Rich grass green
+    dark: '#2e7d32',   // Deep forest green
+  },
+  accent: {
+    light: '#ff7043',  // Bright orange (sports equipment)
+    main: '#ff5722',   // Bold orange-red
+    dark: '#d84315',   // Deep orange
+  },
+  blue: {
+    light: '#42a5f5',  // Sky blue (sports field lines)
+    main: '#1976d2',   // Royal blue
+    dark: '#0d47a1',   // Navy blue
+  },
+  grey: {
+    light: '#f8fffe',  // Clean white with hint of green
+    main: '#e8f5e9',   // Light mint background
+    dark: '#c8e6c9',   // Soft green-grey
+  },
+  text: {
+    primary: '#1b2e35',   // Deep charcoal
+    secondary: '#455a64', // Steel grey
+  }
+};
 
 // Create a theme instance
 let theme = createTheme({
   palette: {
     primary: {
-      light: deepPurple[300],
-      main: deepPurple[500],
-      dark: deepPurple[700],
+      light: turfColors.green.light,
+      main: turfColors.green.main,
+      dark: turfColors.green.dark,
       contrastText: '#fff',
     },
     secondary: {
-      light: amber[300],
-      main: amber[500],
-      dark: amber[700],
-      contrastText: grey[900],
+      light: turfColors.accent.light,
+      main: turfColors.accent.main,
+      dark: turfColors.accent.dark,
+      contrastText: '#fff',
+    },
+    info: {
+      light: turfColors.blue.light,
+      main: turfColors.blue.main,
+      dark: turfColors.blue.dark,
+      contrastText: '#fff',
     },
     background: {
-      default: '#f5f5f7',
+      default: turfColors.grey.light,
       paper: '#ffffff',
     },
     text: {
-      primary: grey[900],
-      secondary: grey[700],
+      primary: turfColors.text.primary,
+      secondary: turfColors.text.secondary,
+    },
+    success: {
+      main: turfColors.green.main,
     },
   },
   typography: {
@@ -130,10 +167,10 @@ let theme = createTheme({
           boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
         },
         containedPrimary: {
-          background: `linear-gradient(45deg, ${deepPurple[600]} 0%, ${deepPurple[400]} 100%)`,
+          background: `linear-gradient(135deg, ${turfColors.green.main} 0%, ${turfColors.green.light} 100%)`,
         },
         containedSecondary: {
-          background: `linear-gradient(45deg, ${amber[600]} 0%, ${amber[400]} 100%)`,
+          background: `linear-gradient(45deg, ${turfColors.accent.main} 30%, ${turfColors.accent.dark} 90%)`,
         },
       },
     },
@@ -166,11 +203,11 @@ let theme = createTheme({
           '& .MuiOutlinedInput-root': {
             borderRadius: 8,
             '&:hover .MuiOutlinedInput-notchedOutline': {
-              borderColor: deepPurple[300],
+              borderColor: turfColors.green.light,
             },
             '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
               borderWidth: 2,
-              borderColor: deepPurple[500],
+              borderColor: turfColors.green.main,
             },
           },
         },
@@ -195,9 +232,9 @@ let theme = createTheme({
         root: {
           borderRadius: 8,
           '&.Mui-selected': {
-            backgroundColor: deepPurple[50],
+            backgroundColor: turfColors.grey.dark,
             '&:hover': {
-              backgroundColor: deepPurple[100],
+              backgroundColor: turfColors.grey.main,
             },
           },
         },
@@ -213,7 +250,7 @@ let theme = createTheme({
     MuiAvatar: {
       styleOverrides: {
         root: {
-          border: `2px solid ${grey[100]}`,
+          border: `2px solid ${turfColors.grey.light}`,
         },
       },
     },
@@ -221,7 +258,23 @@ let theme = createTheme({
       styleOverrides: {
         tooltip: {
           borderRadius: 8,
-          backgroundColor: grey[800],
+          backgroundColor: turfColors.text.primary,
+        },
+      },
+    },
+    MuiFab: {
+      styleOverrides: {
+        root: {
+          boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+          '&:hover': {
+            boxShadow: '0 6px 16px rgba(0, 0, 0, 0.2)',
+          },
+        },
+        primary: {
+          backgroundColor: turfColors.green.main,
+          '&:hover': {
+            backgroundColor: turfColors.green.dark,
+          },
         },
       },
     },
