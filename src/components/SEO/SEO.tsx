@@ -1,5 +1,4 @@
-import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import React, { useEffect } from 'react';
 
 interface SEOProps {
   title: string;
@@ -28,112 +27,147 @@ const SEO: React.FC<SEOProps> = ({
   noIndex = false,
   canonicalUrl,
 }) => {
-  const siteTitle = 'TurfBook - Premium Sports Booking in Lonavala';
-  const fullTitle = title === 'Home' ? siteTitle : `${title} | ${siteTitle}`;
-  const fullUrl = canonicalUrl || url;
-  const fullImage = image.startsWith('http') ? image : `${url}${image}`;
+  useEffect(() => {
+    const siteTitle = 'TurfBook - Premium Sports Booking in Lonavala';
+    const fullTitle = title === 'Home' ? siteTitle : `${title} | ${siteTitle}`;
+    const fullUrl = canonicalUrl || url;
+    const fullImage = image.startsWith('http') ? image : `${url}${image}`;
 
-  return (
-    <Helmet>
-      {/* Basic Meta Tags */}
-      <title>{fullTitle}</title>
-      <meta name="description" content={description} />
-      <meta name="keywords" content={keywords} />
-      <meta name="author" content={author} />
-      <link rel="canonical" href={fullUrl} />
+    // Update document title
+    document.title = fullTitle;
+
+    // Helper function to update or create meta tags
+    const updateMetaTag = (name: string, content: string, property = false) => {
+      const attribute = property ? 'property' : 'name';
+      let meta = document.querySelector(`meta[${attribute}="${name}"]`) as HTMLMetaElement;
       
-      {/* Robots */}
-      {noIndex && <meta name="robots" content="noindex,nofollow" />}
+      if (!meta) {
+        meta = document.createElement('meta');
+        meta.setAttribute(attribute, name);
+        document.head.appendChild(meta);
+      }
+      meta.content = content;
+    };
+
+    // Helper function to update or create link tags
+    const updateLinkTag = (rel: string, href: string) => {
+      let link = document.querySelector(`link[rel="${rel}"]`) as HTMLLinkElement;
       
-      {/* Open Graph / Facebook */}
-      <meta property="og:type" content={type} />
-      <meta property="og:title" content={fullTitle} />
-      <meta property="og:description" content={description} />
-      <meta property="og:image" content={fullImage} />
-      <meta property="og:url" content={fullUrl} />
-      <meta property="og:site_name" content="TurfBook" />
-      <meta property="og:locale" content="en_IN" />
-      
-      {/* Twitter Card */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={fullTitle} />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={fullImage} />
-      <meta name="twitter:creator" content="@TurfBook" />
-      
-      {/* Article specific (for blog posts) */}
-      {type === 'article' && publishedTime && (
-        <meta property="article:published_time" content={publishedTime} />
-      )}
-      {type === 'article' && modifiedTime && (
-        <meta property="article:modified_time" content={modifiedTime} />
-      )}
-      {type === 'article' && author && (
-        <meta property="article:author" content={author} />
-      )}
-      
-      {/* Business specific */}
-      {type === 'business.business' && (
-        <>
-          <meta property="business:contact_data:street_address" content="Gat no 69/32, Railway station, boraj road, near Malavli" />
-          <meta property="business:contact_data:locality" content="Lonavala" />
-          <meta property="business:contact_data:region" content="Maharashtra" />
-          <meta property="business:contact_data:postal_code" content="410401" />
-          <meta property="business:contact_data:country_name" content="India" />
-          <meta property="business:contact_data:phone_number" content="+918468942754" />
-        </>
-      )}
-      
-      {/* Additional SEO Tags */}
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta name="theme-color" content="#388e3c" />
-      <meta name="msapplication-TileColor" content="#388e3c" />
-      
-      {/* Structured Data for Local Business */}
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "SportsActivityLocation",
-          "name": "TurfBook - Turf N Lonavala",
-          "description": description,
-          "url": fullUrl,
-          "image": fullImage,
-          "telephone": "+91-84689-42754",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Gat no 69/32, Railway station, boraj road, near Malavli",
-            "addressLocality": "Lonavala",
-            "addressRegion": "Maharashtra",
-            "postalCode": "410401",
-            "addressCountry": "IN"
-          },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": "18.7451839",
-            "longitude": "73.4835825"
-          },
-          "openingHours": "Mo-Su 06:30-06:30",
-          "priceRange": "₹700-₹1300",
-          "sport": ["Cricket", "Pickleball"],
-          "amenityFeature": [
-            {
-              "@type": "LocationFeatureSpecification",
-              "name": "Cricket Field",
-              "value": true
-            },
-            {
-              "@type": "LocationFeatureSpecification", 
-              "name": "Pickleball Court",
-              "value": true
-            }
-          ],
-          "sameAs": [
-            `https://wa.me/8468942754`
-          ]
-        })}
-      </script>
-    </Helmet>
-  );
+      if (!link) {
+        link = document.createElement('link');
+        link.rel = rel;
+        document.head.appendChild(link);
+      }
+      link.href = href;
+    };
+
+    // Basic Meta Tags
+    updateMetaTag('description', description);
+    updateMetaTag('keywords', keywords);
+    updateMetaTag('author', author);
+    updateLinkTag('canonical', fullUrl);
+
+    // Robots
+    if (noIndex) {
+      updateMetaTag('robots', 'noindex,nofollow');
+    }
+
+    // Open Graph / Facebook
+    updateMetaTag('og:type', type, true);
+    updateMetaTag('og:title', fullTitle, true);
+    updateMetaTag('og:description', description, true);
+    updateMetaTag('og:image', fullImage, true);
+    updateMetaTag('og:url', fullUrl, true);
+    updateMetaTag('og:site_name', 'TurfBook', true);
+    updateMetaTag('og:locale', 'en_IN', true);
+
+    // Twitter Card
+    updateMetaTag('twitter:card', 'summary_large_image');
+    updateMetaTag('twitter:title', fullTitle);
+    updateMetaTag('twitter:description', description);
+    updateMetaTag('twitter:image', fullImage);
+    updateMetaTag('twitter:creator', '@TurfBook');
+
+    // Article specific
+    if (type === 'article' && publishedTime) {
+      updateMetaTag('article:published_time', publishedTime, true);
+    }
+    if (type === 'article' && modifiedTime) {
+      updateMetaTag('article:modified_time', modifiedTime, true);
+    }
+    if (type === 'article' && author) {
+      updateMetaTag('article:author', author, true);
+    }
+
+    // Business specific
+    if (type === 'business.business') {
+      updateMetaTag('business:contact_data:street_address', 'Gat no 69/32, Railway station, boraj road, near Malavli', true);
+      updateMetaTag('business:contact_data:locality', 'Lonavala', true);
+      updateMetaTag('business:contact_data:region', 'Maharashtra', true);
+      updateMetaTag('business:contact_data:postal_code', '410401', true);
+      updateMetaTag('business:contact_data:country_name', 'India', true);
+      updateMetaTag('business:contact_data:phone_number', '+918468942754', true);
+    }
+
+    // Additional SEO Tags
+    updateMetaTag('viewport', 'width=device-width, initial-scale=1.0');
+    updateMetaTag('theme-color', '#388e3c');
+    updateMetaTag('msapplication-TileColor', '#388e3c');
+
+    // Structured Data for Local Business
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "SportsActivityLocation",
+      "name": "TurfBook - Turf N Lonavala",
+      "description": description,
+      "url": fullUrl,
+      "image": fullImage,
+      "telephone": "+91-84689-42754",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Gat no 69/32, Railway station, boraj road, near Malavli",
+        "addressLocality": "Lonavala",
+        "addressRegion": "Maharashtra",
+        "postalCode": "410401",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "18.7451839",
+        "longitude": "73.4835825"
+      },
+      "openingHours": "Mo-Su 06:30-06:30",
+      "priceRange": "₹700-₹1300",
+      "sport": ["Cricket", "Pickleball"],
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Cricket Field",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification", 
+          "name": "Pickleball Court",
+          "value": true
+        }
+      ],
+      "sameAs": [
+        `https://wa.me/8468942754`
+      ]
+    };
+
+    // Update or create structured data script
+    let structuredDataScript = document.querySelector('script[type="application/ld+json"]') as HTMLScriptElement;
+    if (!structuredDataScript) {
+      structuredDataScript = document.createElement('script');
+      structuredDataScript.type = 'application/ld+json';
+      document.head.appendChild(structuredDataScript);
+    }
+    structuredDataScript.textContent = JSON.stringify(structuredData);
+
+  }, [title, description, keywords, image, url, type, author, publishedTime, modifiedTime, noIndex, canonicalUrl]);
+
+  return null;
 };
 
 export default SEO;
