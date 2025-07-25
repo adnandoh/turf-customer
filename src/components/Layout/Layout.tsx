@@ -1,11 +1,11 @@
 import React, { ReactNode, useState, useEffect } from 'react';
-import { 
-  AppBar, 
-  Box, 
-  Container, 
-  Toolbar, 
-  Typography, 
-  useMediaQuery, 
+import {
+  AppBar,
+  Box,
+  Container,
+  Toolbar,
+  Typography,
+  useMediaQuery,
   useTheme,
   Button,
   IconButton,
@@ -21,7 +21,7 @@ import {
   Tooltip,
 } from '@mui/material';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
-import { 
+import {
   Menu as MenuIcon,
   Close as CloseIcon,
   Home as HomeIcon,
@@ -371,9 +371,9 @@ const Layout = ({ children }: LayoutProps) => {
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-      <AppBar 
-        position="fixed" 
-        sx={{ 
+      <AppBar
+        position="fixed"
+        sx={{
           background: 'white',
           boxShadow: '0 2px 20px rgba(0,0,0,0.1)',
           py: 1,
@@ -381,9 +381,9 @@ const Layout = ({ children }: LayoutProps) => {
         elevation={0}
       >
         <Container maxWidth="xl">
-          <Toolbar 
-            disableGutters 
-            sx={{ 
+          <Toolbar
+            disableGutters
+            sx={{
               justifyContent: 'space-between',
               minHeight: { xs: '70px', md: '80px' },
             }}
@@ -412,7 +412,7 @@ const Layout = ({ children }: LayoutProps) => {
                 aria-label="open navigation menu"
                 edge="start"
                 onClick={handleDrawerToggle}
-                sx={{ 
+                sx={{
                   color: 'text.primary',
                   bgcolor: 'rgba(56, 142, 60, 0.1)',
                   borderRadius: 2,
@@ -424,7 +424,7 @@ const Layout = ({ children }: LayoutProps) => {
                 <MenuIcon />
               </IconButton>
             ) : (
-              <Box sx={{ 
+              <Box sx={{
                 display: 'flex',
                 gap: { xs: 1, md: 2 },
                 alignItems: 'center',
@@ -464,7 +464,7 @@ const Layout = ({ children }: LayoutProps) => {
                     {item.text}
                   </Button>
                 ))}
-                
+
                 {/* Book Now Button */}
                 <Button
                   variant="contained"
@@ -720,7 +720,7 @@ const Layout = ({ children }: LayoutProps) => {
           </motion.div>
         )}
       </AnimatePresence>
-      
+
       <Box
         component="main"
         sx={{
@@ -731,14 +731,53 @@ const Layout = ({ children }: LayoutProps) => {
       >
         {children}
       </Box>
-      
+
       <Box>
         <Footer />
       </Box>
-      
+
+      {/* Global Call Button */}
+      <Tooltip title="Call Now" placement="left">
+        <Fab
+          color="secondary"
+          aria-label="call"
+          component="a"
+          href="tel:+918468942754"
+          sx={{
+            position: 'fixed',
+            bottom: 85,
+            right: 20,
+            zIndex: 1000,
+            backgroundColor: colors.accent.main,
+            color: 'white',
+            boxShadow: `0 4px 14px rgba(25, 118, 210, 0.25)`,
+            '&:hover': {
+              backgroundColor: colors.accent.dark,
+              transform: 'scale(1.1)',
+              boxShadow: `0 6px 18px rgba(25, 118, 210, 0.35)`,
+            },
+            transition: 'all 0.3s ease',
+            animation: 'bounce 2s infinite',
+            '@keyframes bounce': {
+              '0%, 20%, 50%, 80%, 100%': {
+                transform: 'translateY(0)',
+              },
+              '40%': {
+                transform: 'translateY(-10px)',
+              },
+              '60%': {
+                transform: 'translateY(-5px)',
+              },
+            },
+          }}
+        >
+          <PhoneIcon />
+        </Fab>
+      </Tooltip>
+
       {/* WhatsApp Chat Button */}
       <WhatsAppChat />
-      
+
       {/* Global Scroll to Top Button */}
       {showScrollTop && (
         <Tooltip title="Scroll to Top" placement="left">
@@ -748,7 +787,7 @@ const Layout = ({ children }: LayoutProps) => {
             onClick={scrollToTop}
             sx={{
               position: 'fixed',
-              bottom: 160,
+              bottom: 150,
               right: 20,
               zIndex: 1000,
               backgroundColor: colors.secondary.main,

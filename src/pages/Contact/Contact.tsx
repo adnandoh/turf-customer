@@ -3,43 +3,7 @@ import { Box, Container, Typography, Paper, Grid as MuiGrid, Button, Chip } from
 import { Phone as PhoneIcon, LocationOn as LocationIcon, Email as EmailIcon, Schedule as ScheduleIcon, Language as WebsiteIcon, WhatsApp as WhatsAppIcon } from '@mui/icons-material';
 import { motion } from 'framer-motion';
 import SEO from '../../components/SEO';
-
-// Enhanced Sports/Turf theme colors
-const colors = {
-  primary: {
-    main: '#388e3c', // Rich grass green
-    dark: '#2e7d32', // Deep forest green
-    light: '#66bb6a', // Vibrant light green
-  },
-  secondary: {
-    main: '#ff5722', // Bold orange-red
-    dark: '#d84315', // Deep orange
-    light: '#ff7043', // Bright orange
-  },
-  accent: {
-    main: '#1976d2', // Royal blue
-    dark: '#0d47a1', // Navy blue
-    light: '#42a5f5', // Sky blue
-  },
-  background: {
-    default: '#f8fffe', // Clean white with hint of green
-    paper: '#ffffff',
-  },
-  text: {
-    primary: '#1b2e35', // Deep charcoal
-    secondary: '#455a64', // Steel grey
-  },
-  gradient: {
-    primary: 'linear-gradient(135deg, #388e3c 0%, #66bb6a 100%)',
-    secondary: 'linear-gradient(45deg, #ff5722 30%, #d84315 90%)',
-    accent: 'linear-gradient(135deg, #1976d2 0%, #42a5f5 100%)',
-  }
-};
-
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-};
+import { colors, fadeIn, BUSINESS_INFO } from '../../constants';
 
 const Contact = () => {
   return (
@@ -147,43 +111,90 @@ const Contact = () => {
                 }}
               >
                 <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
-                  <PhoneIcon sx={{ color: colors.accent.main, mr: 2, fontSize: 32 }} />
+                  <Box
+                    sx={{
+                      bgcolor: colors.accent.main,
+                      borderRadius: '50%',
+                      p: 1.5,
+                      mr: 2,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    <PhoneIcon sx={{ color: 'white', fontSize: 24 }} />
+                  </Box>
                   <Typography variant="h5" fontWeight={600} color={colors.text.primary}>
-                    📱 Call / WhatsApp
+                    📞 Call Us
                   </Typography>
                 </Box>
-                <Typography variant="h6" color={colors.primary.main} sx={{ mb: 2 }}>
-                  8468942754
-                </Typography>
-                <Typography variant="body1" color={colors.text.secondary} sx={{ mb: 2 }}>
-                  Available 24/7 for bookings and support
-                </Typography>
-                <Button
-                  variant="contained"
-                  component="a"
-                  href="tel:+918468942754"
-                  sx={{
-                    mr: 2,
-                    mb: 1,
-                    bgcolor: colors.accent.main,
-                    '&:hover': { bgcolor: colors.accent.dark },
+                <Typography 
+                  variant="h5" 
+                  color={colors.primary.main} 
+                  sx={{ 
+                    mb: 2, 
+                    fontWeight: 700,
+                    letterSpacing: '0.5px'
                   }}
                 >
-                  Call Now
-                </Button>
-                <Button
-                  variant="contained"
-                  component="a"
-                  href="https://wa.me/8468942754"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  sx={{
-                    bgcolor: colors.primary.main,
-                    '&:hover': { bgcolor: colors.primary.dark },
-                  }}
-                >
-                  WhatsApp
-                </Button>
+                  +91 84689 42754
+                </Typography>
+                <Typography variant="body1" color={colors.text.secondary} sx={{ mb: 3, lineHeight: 1.6 }}>
+                  Available 24/7 for instant bookings, queries, and support. Get immediate confirmation for your slot!
+                </Typography>
+                <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+                  <Button
+                    variant="contained"
+                    component="a"
+                    href="tel:+918468942754"
+                    startIcon={<PhoneIcon />}
+                    sx={{
+                      bgcolor: colors.accent.main,
+                      color: 'white',
+                      fontWeight: 600,
+                      px: 3,
+                      py: 1.5,
+                      borderRadius: 3,
+                      textTransform: 'none',
+                      boxShadow: '0 4px 12px rgba(25, 118, 210, 0.3)',
+                      '&:hover': { 
+                        bgcolor: colors.accent.dark,
+                        transform: 'translateY(-2px)',
+                        boxShadow: '0 6px 16px rgba(25, 118, 210, 0.4)',
+                      },
+                      transition: 'all 0.3s ease',
+                    }}
+                  >
+                    Call Now
+                  </Button>
+                  <Button
+                    variant="outlined"
+                    component="a"
+                    href="https://wa.me/8468942754"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    startIcon={<WhatsAppIcon />}
+                    sx={{
+                      borderColor: '#25D366',
+                      color: '#25D366',
+                      fontWeight: 600,
+                      px: 3,
+                      py: 1.5,
+                      borderRadius: 3,
+                      textTransform: 'none',
+                      borderWidth: 2,
+                      '&:hover': { 
+                        bgcolor: '#25D366',
+                        color: 'white',
+                        borderColor: '#25D366',
+                        transform: 'translateY(-2px)',
+                      },
+                      transition: 'all 0.3s ease',
+                    }}
+                  >
+                    WhatsApp
+                  </Button>
+                </Box>
               </Paper>
             </MuiGrid>
 

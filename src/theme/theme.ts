@@ -1,5 +1,4 @@
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
-import { amber, grey } from '@mui/material/colors';
 
 // Enhanced Sports/Turf theme colors
 const turfColors = {

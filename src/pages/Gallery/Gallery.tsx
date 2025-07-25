@@ -22,43 +22,7 @@ import {
 } from '@mui/icons-material';
 import { motion } from 'framer-motion';
 import SEO from '../../components/SEO';
-
-// Enhanced Sports/Turf theme colors
-const colors = {
-  primary: {
-    main: '#388e3c', // Rich grass green
-    dark: '#2e7d32', // Deep forest green
-    light: '#66bb6a', // Vibrant light green
-  },
-  secondary: {
-    main: '#ff5722', // Bold orange-red
-    dark: '#d84315', // Deep orange
-    light: '#ff7043', // Bright orange
-  },
-  accent: {
-    main: '#1976d2', // Royal blue
-    dark: '#0d47a1', // Navy blue
-    light: '#42a5f5', // Sky blue
-  },
-  background: {
-    default: '#f8fffe', // Clean white with hint of green
-    paper: '#ffffff',
-  },
-  text: {
-    primary: '#1b2e35', // Deep charcoal
-    secondary: '#455a64', // Steel grey
-  },
-  gradient: {
-    primary: 'linear-gradient(135deg, #388e3c 0%, #66bb6a 100%)',
-    secondary: 'linear-gradient(45deg, #ff5722 30%, #d84315 90%)',
-    accent: 'linear-gradient(135deg, #1976d2 0%, #42a5f5 100%)',
-  }
-};
-
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-};
+import { colors, fadeIn, BUSINESS_INFO } from '../../constants';
 
 interface GalleryImage {
   id: number;
@@ -71,59 +35,24 @@ interface GalleryImage {
 const galleryImages: GalleryImage[] = [
   {
     id: 1,
-    src: 'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-    title: 'Cricket Match in Action',
+    src: '/images/turf-main-ground.webp',
+    title: 'Turf N Lonavala - Main Ground',
     category: 'cricket',
-    description: 'Professional cricket matches on our well-maintained turf'
+    description: 'Our premium artificial turf ground perfect for cricket, football and other sports'
   },
   {
     id: 2,
-    src: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-    title: 'Football Training Session',
+    src: '/images/turf-multi-sport.webp',
+    title: 'Multi-Sport Turf Facility',
     category: 'football',
-    description: '7v7 football matches with proper goal posts and markings'
+    description: 'Professional grade turf suitable for multiple sports with scenic mountain views'
   },
   {
     id: 3,
-    src: 'https://images.unsplash.com/photo-1556056504-5c7696c4c28d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-    title: 'Night Match Under Floodlights',
-    category: 'night',
-    description: 'LED floodlights enable exciting night matches'
-  },
-  {
-    id: 4,
-    src: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-    title: 'Cricket Practice Nets',
-    category: 'cricket',
-    description: 'Dedicated cricket nets for practice sessions'
-  },
-  {
-    id: 5,
-    src: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-    title: 'Football Tournament',
+    src: '/images/turf-overview.webp',
+    title: 'Sports Ground Overview',
     category: 'events',
-    description: 'Corporate tournaments and special events'
-  },
-  {
-    id: 6,
-    src: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-    title: 'Evening Football Match',
-    category: 'night',
-    description: 'Beautiful evening matches with mountain backdrop'
-  },
-  {
-    id: 7,
-    src: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-    title: 'Team Celebration',
-    category: 'events',
-    description: 'Victory celebrations and team bonding moments'
-  },
-  {
-    id: 8,
-    src: 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-    title: 'Cricket Batting Practice',
-    category: 'cricket',
-    description: 'Individual and team practice sessions'
+    description: 'Complete view of our well-maintained sports facility in the heart of Lonavala'
   }
 ];
 
@@ -177,7 +106,7 @@ const Gallery = () => {
               left: 0,
               right: 0,
               bottom: 0,
-              backgroundImage: 'url(https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=2076&q=80)',
+              backgroundImage: 'url(/images/turf-main-ground.webp)',
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               opacity: 0.2,
@@ -291,85 +220,35 @@ const Gallery = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}
                   >
-                    <Card
+                    <Box
                       sx={{
                         borderRadius: 4,
                         overflow: 'hidden',
                         cursor: 'pointer',
                         transition: 'all 0.3s ease',
                         '&:hover': {
-                          transform: 'translateY(-8px)',
-                          boxShadow: '0 12px 32px rgba(0,0,0,0.2)',
+                          transform: 'translateY(-4px)',
+                          boxShadow: '0 8px 24px rgba(0,0,0,0.15)',
                         },
                       }}
                       onClick={() => handleImageClick(image)}
                     >
-                      <Box sx={{ position: 'relative' }}>
-                        <CardMedia
-                          component="img"
-                          height="250"
-                          image={image.src}
-                          alt={image.title}
-                          sx={{
-                            transition: 'transform 0.3s ease',
-                            '&:hover': {
-                              transform: 'scale(1.05)',
-                            },
-                          }}
-                        />
-                        <Box
-                          sx={{
-                            position: 'absolute',
-                            top: 0,
-                            left: 0,
-                            right: 0,
-                            bottom: 0,
-                            background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%)',
-                            display: 'flex',
-                            alignItems: 'flex-end',
-                            p: 2,
-                          }}
-                        >
-                          <Box>
-                            <Typography
-                              variant="h6"
-                              sx={{
-                                color: 'white',
-                                fontWeight: 700,
-                                mb: 0.5,
-                                textShadow: '0 1px 2px rgba(0,0,0,0.5)',
-                              }}
-                            >
-                              {image.title}
-                            </Typography>
-                            <Typography
-                              variant="body2"
-                              sx={{
-                                color: 'rgba(255,255,255,0.9)',
-                                textShadow: '0 1px 2px rgba(0,0,0,0.5)',
-                              }}
-                            >
-                              {image.description}
-                            </Typography>
-                          </Box>
-                        </Box>
-                        <Box
-                          sx={{
-                            position: 'absolute',
-                            top: 12,
-                            right: 12,
-                            bgcolor: 'rgba(255,255,255,0.9)',
-                            borderRadius: '50%',
-                            p: 1,
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                          }}
-                        >
-                          <ZoomInIcon sx={{ color: colors.primary.main, fontSize: 20 }} />
-                        </Box>
-                      </Box>
-                    </Card>
+                      <Box
+                        component="img"
+                        src={image.src}
+                        alt={image.title}
+                        sx={{
+                          width: '100%',
+                          height: 250,
+                          objectFit: 'cover',
+                          borderRadius: 4,
+                          transition: 'transform 0.3s ease',
+                          '&:hover': {
+                            transform: 'scale(1.02)',
+                          },
+                        }}
+                      />
+                    </Box>
                   </motion.div>
                 </MuiGrid>
               ))}

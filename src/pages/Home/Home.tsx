@@ -18,48 +18,7 @@ import {
 } from '@mui/icons-material';
 import { motion } from 'framer-motion';
 import SEO from '../../components/SEO';
-
-// Enhanced Sports/Turf theme colors
-const colors = {
-  primary: {
-    main: '#388e3c', // Rich grass green
-    dark: '#2e7d32', // Deep forest green
-    light: '#66bb6a', // Vibrant light green
-  },
-  secondary: {
-    main: '#ff5722', // Bold orange-red
-    dark: '#d84315', // Deep orange
-    light: '#ff7043', // Bright orange
-  },
-  accent: {
-    main: '#1976d2', // Royal blue
-    dark: '#0d47a1', // Navy blue
-    light: '#42a5f5', // Sky blue
-  },
-  background: {
-    default: '#f8fffe', // Clean white with hint of green
-    paper: '#ffffff',
-  },
-  text: {
-    primary: '#1b2e35', // Deep charcoal
-    secondary: '#455a64', // Steel grey
-  },
-  gradient: {
-    primary: 'linear-gradient(135deg, #388e3c 0%, #66bb6a 100%)',
-    secondary: 'linear-gradient(45deg, #ff5722 30%, #d84315 90%)',
-    accent: 'linear-gradient(135deg, #1976d2 0%, #42a5f5 100%)',
-  }
-};
-
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-};
-
-const slideIn = {
-  hidden: { opacity: 0, x: -20 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.6 } }
-};
+import { colors, fadeIn, slideIn, BUSINESS_INFO } from '../../constants';
 
 const Home = () => {
   const theme = useTheme();
@@ -407,82 +366,7 @@ const Home = () => {
         </Container>
       </Box>
 
-      {/* Floating Action Buttons - Home Page Only */}
-      <Tooltip title="Call Now" placement="left">
-        <Fab
-          color="secondary"
-          aria-label="call"
-          sx={{
-            position: 'fixed',
-            bottom: 90,
-            right: 20,
-            zIndex: 1000,
-            backgroundColor: colors.accent.main,
-            color: 'white',
-            boxShadow: `0 4px 14px rgba(25, 118, 210, 0.25)`,
-            '&:hover': {
-              backgroundColor: colors.accent.dark,
-              transform: 'scale(1.1)',
-              boxShadow: `0 6px 18px rgba(25, 118, 210, 0.35)`,
-            },
-            transition: 'all 0.3s ease',
-            animation: 'bounce 2s infinite',
-            '@keyframes bounce': {
-              '0%, 20%, 50%, 80%, 100%': {
-                transform: 'translateY(0)',
-              },
-              '40%': {
-                transform: 'translateY(-10px)',
-              },
-              '60%': {
-                transform: 'translateY(-5px)',
-              },
-            },
-          }}
-          href="tel:+918468942754"
-        >
-          <PhoneIcon />
-        </Fab>
-      </Tooltip>
 
-      <Tooltip title="Chat on WhatsApp" placement="left">
-        <Fab
-          color="primary"
-          aria-label="whatsapp"
-          sx={{
-            position: 'fixed',
-            bottom: 20,
-            right: 20,
-            zIndex: 1000,
-            backgroundColor: '#25D366',
-            color: 'white',
-            boxShadow: `0 4px 14px rgba(37, 211, 102, 0.25)`,
-            '&:hover': {
-              backgroundColor: '#128C7E',
-              transform: 'scale(1.1)',
-              boxShadow: `0 6px 18px rgba(37, 211, 102, 0.35)`,
-            },
-            transition: 'all 0.3s ease',
-            animation: 'pulse 2s infinite',
-            '@keyframes pulse': {
-              '0%': {
-                boxShadow: '0 0 0 0 rgba(37, 211, 102, 0.7)',
-              },
-              '70%': {
-                boxShadow: '0 0 0 10px rgba(37, 211, 102, 0)',
-              },
-              '100%': {
-                boxShadow: '0 0 0 0 rgba(37, 211, 102, 0)',
-              },
-            },
-          }}
-          href="https://wa.me/8468942754?text=Hi,%20I%20want%20to%20book%20a%20slot%20at%20Turf%20N%20Lonavala!"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <WhatsAppIcon />
-        </Fab>
-      </Tooltip>
 
 
     </Box>

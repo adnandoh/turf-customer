@@ -12,43 +12,7 @@ import {
 } from '@mui/icons-material';
 import { motion } from 'framer-motion';
 import SEO from '../../components/SEO';
-
-// Enhanced Sports/Turf theme colors
-const colors = {
-  primary: {
-    main: '#388e3c', // Rich grass green
-    dark: '#2e7d32', // Deep forest green
-    light: '#66bb6a', // Vibrant light green
-  },
-  secondary: {
-    main: '#ff5722', // Bold orange-red
-    dark: '#d84315', // Deep orange
-    light: '#ff7043', // Bright orange
-  },
-  accent: {
-    main: '#1976d2', // Royal blue
-    dark: '#0d47a1', // Navy blue
-    light: '#42a5f5', // Sky blue
-  },
-  background: {
-    default: '#f8fffe', // Clean white with hint of green
-    paper: '#ffffff',
-  },
-  text: {
-    primary: '#1b2e35', // Deep charcoal
-    secondary: '#455a64', // Steel grey
-  },
-  gradient: {
-    primary: 'linear-gradient(135deg, #388e3c 0%, #66bb6a 100%)',
-    secondary: 'linear-gradient(45deg, #ff5722 30%, #d84315 90%)',
-    accent: 'linear-gradient(135deg, #1976d2 0%, #42a5f5 100%)',
-  }
-};
-
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-};
+import { colors, fadeIn, BUSINESS_INFO } from '../../constants';
 
 const BookingPolicy = () => {
   return (
@@ -160,33 +124,34 @@ const BookingPolicy = () => {
                       ✔ Rescheduling
                     </Typography>
                   </Box>
-                  <List>
-                    <ListItem sx={{ px: 0 }}>
-                      <ListItemIcon>
+                  <List sx={{ py: 0 }}>
+                    <ListItem sx={{ px: 0, py: 1.5 }}>
+                      <ListItemIcon sx={{ minWidth: 36 }}>
                         <CheckIcon sx={{ color: colors.primary.main }} />
                       </ListItemIcon>
                       <ListItemText 
                         primary="You may reschedule your slot up to 6 hours before your booking"
                         secondary="Subject to availability"
-                        primaryTypographyProps={{ fontWeight: 500 }}
+                        primaryTypographyProps={{ fontWeight: 500, lineHeight: 1.4 }}
+                        secondaryTypographyProps={{ fontSize: '0.875rem', mt: 0.5 }}
                       />
                     </ListItem>
-                    <ListItem sx={{ px: 0 }}>
-                      <ListItemIcon>
+                    <ListItem sx={{ px: 0, py: 1.5 }}>
+                      <ListItemIcon sx={{ minWidth: 36 }}>
                         <CheckIcon sx={{ color: colors.primary.main }} />
                       </ListItemIcon>
                       <ListItemText 
                         primary="One reschedule allowed per booking"
-                        primaryTypographyProps={{ fontWeight: 500 }}
+                        primaryTypographyProps={{ fontWeight: 500, lineHeight: 1.4 }}
                       />
                     </ListItem>
-                    <ListItem sx={{ px: 0 }}>
-                      <ListItemIcon>
+                    <ListItem sx={{ px: 0, py: 1.5 }}>
+                      <ListItemIcon sx={{ minWidth: 36 }}>
                         <CheckIcon sx={{ color: colors.primary.main }} />
                       </ListItemIcon>
                       <ListItemText 
                         primary="Rescheduled slots must be used within 7 days"
-                        primaryTypographyProps={{ fontWeight: 500 }}
+                        primaryTypographyProps={{ fontWeight: 500, lineHeight: 1.4 }}
                       />
                     </ListItem>
                   </List>
@@ -210,32 +175,59 @@ const BookingPolicy = () => {
                       ❌ Cancellations
                     </Typography>
                   </Box>
-                  <List>
-                    <ListItem sx={{ px: 0 }}>
-                      <ListItemIcon>
-                        <Chip label="Full refund" size="small" sx={{ bgcolor: colors.primary.main, color: 'white' }} />
+                  <List sx={{ py: 0 }}>
+                    <ListItem sx={{ px: 0, py: 1.5 }}>
+                      <ListItemIcon sx={{ minWidth: 36 }}>
+                        <Chip 
+                          label="Full refund" 
+                          size="small" 
+                          sx={{ 
+                            bgcolor: colors.primary.main, 
+                            color: 'white',
+                            fontWeight: 600,
+                            fontSize: '0.75rem'
+                          }} 
+                        />
                       </ListItemIcon>
                       <ListItemText 
                         primary="Cancel at least 12 hours before your slot"
-                        primaryTypographyProps={{ fontWeight: 500 }}
+                        primaryTypographyProps={{ fontWeight: 500, lineHeight: 1.4, ml: 1 }}
                       />
                     </ListItem>
-                    <ListItem sx={{ px: 0 }}>
-                      <ListItemIcon>
-                        <Chip label="50% refund" size="small" sx={{ bgcolor: colors.accent.main, color: 'white' }} />
+                    <ListItem sx={{ px: 0, py: 1.5 }}>
+                      <ListItemIcon sx={{ minWidth: 36 }}>
+                        <Chip 
+                          label="50% refund" 
+                          size="small" 
+                          sx={{ 
+                            bgcolor: colors.accent.main, 
+                            color: 'white',
+                            fontWeight: 600,
+                            fontSize: '0.75rem'
+                          }} 
+                        />
                       </ListItemIcon>
                       <ListItemText 
                         primary="Cancel between 6–12 hours before"
-                        primaryTypographyProps={{ fontWeight: 500 }}
+                        primaryTypographyProps={{ fontWeight: 500, lineHeight: 1.4, ml: 1 }}
                       />
                     </ListItem>
-                    <ListItem sx={{ px: 0 }}>
-                      <ListItemIcon>
-                        <Chip label="No refund" size="small" sx={{ bgcolor: colors.secondary.main, color: 'white' }} />
+                    <ListItem sx={{ px: 0, py: 1.5 }}>
+                      <ListItemIcon sx={{ minWidth: 36 }}>
+                        <Chip 
+                          label="No refund" 
+                          size="small" 
+                          sx={{ 
+                            bgcolor: colors.secondary.main, 
+                            color: 'white',
+                            fontWeight: 600,
+                            fontSize: '0.75rem'
+                          }} 
+                        />
                       </ListItemIcon>
                       <ListItemText 
                         primary="Cancel less than 6 hours before or no-shows"
-                        primaryTypographyProps={{ fontWeight: 500 }}
+                        primaryTypographyProps={{ fontWeight: 500, lineHeight: 1.4, ml: 1 }}
                       />
                     </ListItem>
                   </List>

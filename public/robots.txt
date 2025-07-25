@@ -1,10 +1,14 @@
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://turfbook.com/sitemap.xml
+# Optimize crawling
+Crawl-delay: 1
 
-# Disallow checkout and admin pages
+# Block unnecessary paths
+Disallow: /api/
+Disallow: /*.json$
+Disallow: /src/
+Disallow: /node_modules/
 Disallow: /checkout
 Disallow: /admin
 
@@ -12,8 +16,10 @@ Disallow: /admin
 Allow: /
 Allow: /about
 Allow: /contact
-Allow: /booking/cricket
-Allow: /booking/pickleball
+Allow: /gallery
+Allow: /amenities
+Allow: /faq
+Allow: /booking-policy
 
-# Crawl delay
-Crawl-delay: 1
+# Sitemap location
+Sitemap: https://turfbook.com/sitemap.xml
