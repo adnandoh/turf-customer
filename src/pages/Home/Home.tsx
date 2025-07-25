@@ -28,7 +28,7 @@ const Home = () => {
     <>
       <SEO
         title="Home"
-        description="Book premium cricket and pickleball courts in Lonavala. TurfBook offers world-class sports facilities with scenic mountain views. Available 24/7 with instant confirmation. Rates from ₹700/hour."
+        description="Book a premium cricket and pickleball courts in Lonavala. TurfBook offers world-class sports facilities with scenic mountain views. Available 24/7 with instant confirmation. Rates from ₹700/hour."
         keywords="turf booking lonavala, cricket ground booking, pickleball court rental, sports facility lonavala, turf rental mumbai pune, outdoor sports booking"
         type="website"
         url="https://turfbook.com"
