@@ -21,26 +21,8 @@ const Amenities = () => {
   const sportsAmenities = [
     {
       icon: <CricketIcon sx={{ fontSize: 48, color: colors.primary.main }} />,
-      title: '🏏 Cricket Nets',
+      title: '🏏 Cricket',
       description: 'Professional cricket nets with proper pitch conditions for practice and matches',
-      color: colors.primary.main,
-    },
-    {
-      icon: <FootballIcon sx={{ fontSize: 48, color: colors.secondary.main }} />,
-      title: '⚽ Football (7v7)',
-      description: 'Full-size football ground perfect for 7v7 matches with goal posts and markings',
-      color: colors.secondary.main,
-    },
-    {
-      icon: <BasketballIcon sx={{ fontSize: 48, color: colors.accent.main }} />,
-      title: '🏀 Basketball',
-      description: 'Basketball court with professional hoops and court markings',
-      color: colors.accent.main,
-    },
-    {
-      icon: <BadmintonIcon sx={{ fontSize: 48, color: colors.primary.main }} />,
-      title: '🏸 Badminton',
-      description: 'Badminton courts with proper net setup and court boundaries',
       color: colors.primary.main,
     },
     {
@@ -48,6 +30,12 @@ const Amenities = () => {
       title: '🥒 Pickleball',
       description: 'Dedicated pickleball courts with regulation nets and court dimensions',
       color: colors.secondary.main,
+    },
+    {
+      icon: <FootballIcon sx={{ fontSize: 48, color: colors.accent.main }} />,
+      title: '⚽ Football',
+      description: 'Full-size football ground perfect for 7v7 matches with goal posts and markings',
+      color: colors.accent.main,
     },
   ];
 
@@ -88,79 +76,7 @@ const Amenities = () => {
       />
       <Box sx={{ bgcolor: colors.background.default, minHeight: '100vh' }}>
 
-        {/* Hero Section */}
-        <Box 
-          sx={{ 
-            position: 'relative',
-            minHeight: '60vh',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: colors.background.paper,
-            overflow: 'hidden',
-            '&::before': {
-              content: '""',
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              backgroundImage: 'url(https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2076&q=80)',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              opacity: 0.2,
-              zIndex: 0,
-            },
-            '&::after': {
-              content: '""',
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              background: colors.gradient.primary,
-              opacity: 0.8,
-              zIndex: 1,
-            }
-          }}
-        >
-          <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2 }}>
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={fadeIn}
-            >
-              <Typography
-                variant="h2"
-                component="h1"
-                align="center"
-                sx={{
-                  fontWeight: 800,
-                  mb: 3,
-                  color: 'white',
-                  fontSize: { xs: '2rem', sm: '2.5rem', md: '3.5rem' },
-                  textShadow: '0 2px 4px rgba(0,0,0,0.3)',
-                }}
-              >
-                🏅 Sports & Amenities
-              </Typography>
-              <Typography
-                variant="h5"
-                align="center"
-                sx={{
-                  color: 'rgba(255,255,255,0.95)',
-                  maxWidth: '800px',
-                  mx: 'auto',
-                  lineHeight: 1.6,
-                  fontSize: { xs: '1.125rem', md: '1.5rem' },
-                  textShadow: '0 1px 2px rgba(0,0,0,0.2)',
-                }}
-              >
-                Enjoy a variety of sports and top-notch facilities
-              </Typography>
-            </motion.div>
-          </Container>
-        </Box>
+
 
         {/* Sports Section */}
         <Container maxWidth="lg" sx={{ py: 8 }}>
