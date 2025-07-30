@@ -10,7 +10,9 @@
     "lint:fix": "next lint --fix",
     "type-check": "tsc --noEmit",
     "build:analyze": "ANALYZE=true npm run build",
-    "clean": "rm -rf .next out"
+    "clean": "rm -rf .next out",
+    "clear-cache": "node scripts/clear-cache.js",
+    "deploy": "npm run build && npm run clear-cache"
   },
   "dependencies": {
     "@next/third-parties": "^14.0.0",
