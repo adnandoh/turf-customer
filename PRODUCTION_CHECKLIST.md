@@ -74,9 +74,16 @@
    ```
 
 2. **Deploy to Vercel**:
-   - Vercel will auto-detect Next.js
-   - No additional configuration needed
-   - Build will use optimized settings
+   - Added explicit vercel.json configuration
+   - Removed conflicting build scripts
+   - Framework detection now works properly
+
+3. **If still getting "dist" directory error**:
+   - Go to Vercel Dashboard → Project Settings → General
+   - Set Framework Preset to "Next.js"
+   - Set Build Command to "next build"
+   - Leave Output Directory empty
+   - Redeploy
 
 3. **Post-deployment verification**:
    - ✅ Check all pages load correctly
