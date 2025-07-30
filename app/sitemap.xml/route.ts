@@ -19,6 +19,7 @@ export async function GET() {
   const urlEntries = urls.map((path) => {
     let changefreq = 'monthly';
     let priority = 0.8;
+
     if (path === '') {
       changefreq = 'weekly';
       priority = 1.0;
@@ -31,10 +32,19 @@ export async function GET() {
       changefreq = 'yearly';
       priority = 0.5;
     }
-    return `  <url>\n    <loc>${baseUrl}${path ? '/' + path : ''}</loc>\n    <lastmod>${lastModified}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
+
+    return `  <url>
+    <loc>${baseUrl}${path ? '/' + path : ''}</loc>
+    <lastmod>${lastModified}</lastmod>
+    <changefreq>${changefreq}</changefreq>
+    <priority>${priority}</priority>
+  </url>`;
   });
 
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urlEntries.join('\n')}\n</urlset>`.trim();
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urlEntries.join('\n')}
+</urlset>`;
 
   return new NextResponse(xml, {
     headers: {
@@ -52,4 +62,4 @@ export async function HEAD() {
       'Cache-Control': 'public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400',
     },
   });
-} 
+}
