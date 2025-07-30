@@ -12,6 +12,7 @@
     "build:analyze": "ANALYZE=true npm run build",
     "clean": "rm -rf .next out",
     "clear-cache": "node scripts/clear-cache.js",
+    "validate-sitemap": "node scripts/validate-sitemap.js",
     "deploy": "npm run build && npm run clear-cache"
   },
   "dependencies": {
@@ -31,6 +32,7 @@
     "eslint-config-next": "14.0.0",
     "postcss": "^8",
     "tailwindcss": "^3.3.0",
-    "typescript": "^5"
+    "typescript": "^5",
+    "xmldom": "^0.6.0"
   }
 }
