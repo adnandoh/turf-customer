@@ -41,4 +41,13 @@ export async function GET() {
       'Content-Type': 'application/xml',
     },
   });
+}
+
+export async function HEAD() {
+  return new NextResponse(null, {
+    status: 200,
+    headers: {
+      'Content-Type': 'application/xml',
+    },
+  });
 } 
