@@ -58,16 +58,67 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "SportsActivityLocation",
               "name": "Turf N Lonavala",
-              "description": "Multipurpose Outdoor Sports Turf in Lonavala",
+              "description": "Multipurpose Outdoor Sports Turf in Lonavala offering cricket, football, basketball, pickleball, and badminton facilities",
               "address": {
                 "@type": "PostalAddress",
+                "streetAddress": "Gat no 69/32, Railway station, boraj road, near Malavli",
                 "addressLocality": "Lonavala",
                 "addressRegion": "Maharashtra",
+                "postalCode": "410401",
                 "addressCountry": "IN"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": "18.745212",
+                "longitude": "73.4836373"
               },
               "telephone": "+91-8468942754",
               "email": "turfnlonavala@gmail.com",
               "url": "https://turfngroup.com",
+              "openingHours": "Mo-Su 00:00-23:59",
+              "priceRange": "₹600-₹1100",
+              "amenityFeature": [
+                {
+                  "@type": "LocationFeatureSpecification",
+                  "name": "Cricket Field",
+                  "value": true
+                },
+                {
+                  "@type": "LocationFeatureSpecification", 
+                  "name": "Football Field",
+                  "value": true
+                },
+                {
+                  "@type": "LocationFeatureSpecification",
+                  "name": "Basketball Court", 
+                  "value": true
+                },
+                {
+                  "@type": "LocationFeatureSpecification",
+                  "name": "Pickleball Court",
+                  "value": true
+                },
+                {
+                  "@type": "LocationFeatureSpecification",
+                  "name": "Badminton Court",
+                  "value": true
+                },
+                {
+                  "@type": "LocationFeatureSpecification",
+                  "name": "24 Hour Access",
+                  "value": true
+                },
+                {
+                  "@type": "LocationFeatureSpecification",
+                  "name": "Parking",
+                  "value": true
+                }
+              ],
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.8",
+                "reviewCount": "150"
+              },
               "sameAs": [
                 "https://www.facebook.com/turfnlonavala",
                 "https://www.instagram.com/turfnlonavala"
