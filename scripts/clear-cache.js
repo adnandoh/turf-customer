@@ -7,54 +7,56 @@
 
 const https = require('https');
 
-const urls = [
+const urlsToClear = [
+  'https://turfngroup.com',
   'https://turfngroup.com/sitemap.xml',
   'https://turfngroup.com/robots.txt',
-  'https://turfngroup.com/',
+  'https://turfngroup.com/about',
+  'https://turfngroup.com/amenities',
+  'https://turfngroup.com/gallery',
+  'https://turfngroup.com/contact',
+  'https://turfngroup.com/faq',
+  'https://turfngroup.com/book',
+  'https://turfngroup.com/privacy-policy',
+  'https://turfngroup.com/policy'
 ];
 
 async function clearCache() {
-  console.log('🔄 Clearing cache for production URLs...\n');
+  console.log('🧹 Clearing cache for all pages...\n');
   
-  for (const url of urls) {
+  for (const url of urlsToClear) {
     try {
-      const options = {
-        method: 'HEAD',
-        headers: {
-          'Cache-Control': 'no-cache',
-          'Pragma': 'no-cache',
-        }
-      };
+      console.log(`Clearing cache for: ${url}`);
       
-      await new Promise((resolve, reject) => {
-        const req = https.request(url, options, (res) => {
-          console.log(`✅ ${url} - Status: ${res.statusCode}`);
-          console.log(`   Cache-Control: ${res.headers['cache-control'] || 'Not set'}`);
-          console.log(`   Content-Type: ${res.headers['content-type'] || 'Not set'}\n`);
-          resolve();
-        });
-        
-        req.on('error', (error) => {
-          console.log(`❌ ${url} - Error: ${error.message}\n`);
-          reject(error);
-        });
-        
-        req.end();
+      // Make a request to clear cache
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
+          'Pragma': 'no-cache',
+          'Expires': '0'
+        }
       });
       
-      // Add small delay between requests
-      await new Promise(resolve => setTimeout(resolve, 500));
+      console.log(`✅ Status: ${response.status}`);
+      
+      // Check for problematic headers
+      const xRobotsTag = response.headers.get('x-robots-tag');
+      if (xRobotsTag) {
+        console.log(`⚠️  Warning: X-Robots-Tag found: ${xRobotsTag}`);
+      }
       
     } catch (error) {
-      console.log(`❌ Failed to check ${url}: ${error.message}\n`);
+      console.error(`❌ Error clearing cache for ${url}:`, error.message);
     }
   }
   
-  console.log('🎉 Cache clearing completed!');
+  console.log('\n✅ Cache clearing completed!');
   console.log('\n📝 Next steps:');
-  console.log('1. Wait 5-10 minutes for CDN propagation');
-  console.log('2. Test your sitemap: https://turfngroup.com/sitemap.xml');
-  console.log('3. Submit to Google Search Console if needed');
+  console.log('   1. Deploy your changes to production');
+  console.log('   2. Wait 5-10 minutes for Vercel to update');
+  console.log('   3. Test the sitemap again');
+  console.log('   4. Resubmit in Google Search Console');
 }
 
-clearCache().catch(console.error);
+clearCache();
