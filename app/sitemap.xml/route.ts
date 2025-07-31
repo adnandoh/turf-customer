@@ -42,7 +42,6 @@ export async function GET() {
   });
 
   const xml =
-    
     '<?xml version="1.0" encoding="UTF-8"?>\n' +
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
     urlEntries.join('\n') +
@@ -50,8 +49,11 @@ export async function GET() {
 
   return new NextResponse(xml, {
     headers: {
-      'Content-Type': 'application/xml',
-      'Cache-Control': 'public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400',
+      'Content-Type': 'application/xml; charset=utf-8',
+      'Cache-Control': 'no-cache, no-store, must-revalidate',
+      'Pragma': 'no-cache',
+      'Expires': '0',
+      'X-Robots-Tag': 'noindex, nofollow',
     },
   });
 }
@@ -60,8 +62,10 @@ export async function HEAD() {
   return new NextResponse(null, {
     status: 200,
     headers: {
-      'Content-Type': 'application/xml',
-      'Cache-Control': 'public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400',
+      'Content-Type': 'application/xml; charset=utf-8',
+      'Cache-Control': 'no-cache, no-store, must-revalidate',
+      'Pragma': 'no-cache',
+      'Expires': '0',
     },
   });
 }
