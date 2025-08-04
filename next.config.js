@@ -20,6 +20,23 @@ const nextConfig = {
     domains: ['images.unsplash.com'],
   },
 
+  // Redirects to enforce www subdomain
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'turfngroup.com',
+          },
+        ],
+        destination: 'https://www.turfngroup.com/:path*',
+        permanent: true,
+      },
+    ]
+  },
+
   // Security headers
   async headers() {
     return [
