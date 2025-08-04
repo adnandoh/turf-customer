@@ -8,17 +8,17 @@
 const https = require('https');
 
 const urlsToClear = [
-  'https://turfngroup.com',
-  'https://turfngroup.com/sitemap.xml',
-  'https://turfngroup.com/robots.txt',
-  'https://turfngroup.com/about',
-  'https://turfngroup.com/amenities',
-  'https://turfngroup.com/gallery',
-  'https://turfngroup.com/contact',
-  'https://turfngroup.com/faq',
-  'https://turfngroup.com/book',
-  'https://turfngroup.com/privacy-policy',
-  'https://turfngroup.com/policy'
+  'https://www.turfngroup.com/',
+  'https://www.turfngroup.com/sitemap.xml',
+  'https://www.turfngroup.com/robots.txt',
+  'https://www.turfngroup.com/about/',
+  'https://www.turfngroup.com/amenities/',
+  'https://www.turfngroup.com/gallery/',
+  'https://www.turfngroup.com/contact/',
+  'https://www.turfngroup.com/faq/',
+  'https://www.turfngroup.com/book/',
+  'https://www.turfngroup.com/privacy-policy/',
+  'https://www.turfngroup.com/policy/'
 ];
 
 async function clearCache() {

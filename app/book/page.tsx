@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Calendar, Clock, Users, Phone, Mail, User } from 'lucide-react'
+import Breadcrumb from '../components/Breadcrumb'
 
 const timeSlots = [
   '06:00 - 07:00', '07:00 - 08:00', '08:00 - 09:00', '09:00 - 10:00',
@@ -45,6 +46,7 @@ export default function Book() {
 
   return (
     <div className="pt-16">
+      <Breadcrumb />
 
       {/* Booking Form */}
       <section className="py-16">

@@ -12,11 +12,7 @@ const Navbar = () => {
   const navItems = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
-    { name: 'Amenities', href: '/amenities' },
-    { name: 'Gallery', href: '/gallery' },
     { name: 'Contact', href: '/contact' },
-    { name: 'FAQ', href: '/faq' },
-    { name: 'Privacy Policy', href: '/privacy-policy' },
   ]
 
   return (

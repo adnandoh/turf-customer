@@ -27,7 +27,7 @@ node scripts/clear-cache.js
 ### 4. Test the Fixed Sitemap
 After deployment, test:
 ```bash
-curl -v https://turfngroup.com/sitemap.xml
+curl -v https://www.turfngroup.com/sitemap.xml
 ```
 
 **Expected result:** No `X-Robots-Tag: noindex, nofollow` header
@@ -36,7 +36,7 @@ curl -v https://turfngroup.com/sitemap.xml
 1. Go to Google Search Console
 2. Navigate to Sitemaps section
 3. Click "Add a new sitemap"
-4. Enter: `https://turfngroup.com/sitemap.xml`
+4. Enter: `https://www.turfngroup.com/sitemap.xml`
 5. Submit
 
 ### 6. Monitor Results

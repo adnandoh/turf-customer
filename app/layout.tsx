@@ -9,15 +9,15 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://turfngroup.com'),
-  title: 'Turf N Lonavala - Multipurpose Outdoor Sports Turf',
-  description: 'Experience the thrill of sports amidst scenic mountain views at Turf N Lonavala, offering cricket, football, basketball, pickleball, and badminton facilities.',
-  keywords: 'sports turf, Lonavala, football, cricket, basketball, pickleball, badminton, booking, sports facility',
+  metadataBase: new URL('https://www.turfngroup.com'),
+  title: 'Sports Turf in Lonavala | Turf N Group 24/7 Booking',
+  description: 'Book Turf N Group\'s sports turf in Lonavala for cricket or football, open 24/7. Fast online turf booking, free parking and full refund up to 6 hours before.',
+  keywords: 'turf near me, cricket turf near me, football turf near me, turf booking, football turf, cricket turf, turf ground near me, football turf cost, cricket turf price, badminton turf, basketball turf near me, turf ground cricket',
   authors: [{ name: 'Turf N Lonavala' }],
   openGraph: {
-    title: 'Turf N Lonavala - Multipurpose Outdoor Sports Turf',
-    description: 'Experience the thrill of sports amidst scenic mountain views',
-    url: 'https://turfngroup.com',
+    title: 'Sports Turf in Lonavala | Turf N Group 24/7 Booking',
+    description: 'Book Turf N Group\'s sports turf in Lonavala for cricket or football, open 24/7. Fast online turf booking, free parking and full refund up to 6 hours before.',
+    url: 'https://www.turfngroup.com/',
     siteName: 'Turf N Lonavala',
     images: [
       {
@@ -31,8 +31,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Turf N Lonavala - Multipurpose Outdoor Sports Turf',
-    description: 'Experience the thrill of sports amidst scenic mountain views',
+    title: 'Sports Turf in Lonavala | Turf N Group 24/7 Booking',
+    description: 'Book Turf N Group\'s sports turf in Lonavala for cricket or football, open 24/7. Fast online turf booking, free parking and full refund up to 6 hours before.',
     images: ['/og-image.jpg'],
   },
 }
@@ -74,9 +74,9 @@ export default function RootLayout({
               },
               "telephone": "+91-8468942754",
               "email": "turfnlonavala@gmail.com",
-              "url": "https://turfngroup.com",
+              "url": "https://www.turfngroup.com/",
               "openingHours": "Mo-Su 00:00-23:59",
-              "priceRange": "₹600-₹1100",
+              "priceRange": "₹800-₹1300",
               "amenityFeature": [
                 {
                   "@type": "LocationFeatureSpecification",
@@ -84,13 +84,13 @@ export default function RootLayout({
                   "value": true
                 },
                 {
-                  "@type": "LocationFeatureSpecification", 
+                  "@type": "LocationFeatureSpecification",
                   "name": "Football Field",
                   "value": true
                 },
                 {
                   "@type": "LocationFeatureSpecification",
-                  "name": "Basketball Court", 
+                  "name": "Basketball Court",
                   "value": true
                 },
                 {

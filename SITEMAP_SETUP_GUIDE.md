@@ -22,18 +22,18 @@
 
 ### Method 1: Direct Sitemap Submission
 1. Go to [Google Search Console](https://search.google.com/search-console)
-2. Select your property: `turfngroup.com`
+2. Select your property: `www.turfngroup.com`
 3. Go to **Sitemaps** in the left sidebar
-4. Add new sitemap: `https://turfngroup.com/sitemap.xml`
+4. Add new sitemap: `https://www.turfngroup.com/sitemap.xml`
 5. Click **Submit**
 
 ### Method 2: Via robots.txt (Automatic Discovery)
 - Google will automatically discover your sitemap from robots.txt
-- Your robots.txt now includes: `Sitemap: https://turfngroup.com/sitemap.xml`
+- Your robots.txt now includes: `Sitemap: https://www.turfngroup.com/sitemap.xml`
 
 ### Method 3: Test First
 Before submitting, test your sitemap:
-1. Visit: `https://turfngroup.com/sitemap.xml`
+1. Visit: `https://www.turfngroup.com/sitemap.xml`
 2. Verify it loads correctly
 3. Use [Google's Sitemap Tester](https://www.xml-sitemaps.com/validate-xml-sitemap.html)
 
@@ -41,13 +41,13 @@ Before submitting, test your sitemap:
 
 ### 1. Check Sitemap Accessibility
 ```bash
-curl -I https://turfngroup.com/sitemap.xml
+curl -I https://www.turfngroup.com/sitemap.xml
 ```
 Should return: `Content-Type: application/xml`
 
 ### 2. Check robots.txt
 ```bash
-curl https://turfngroup.com/robots.txt
+curl https://www.turfngroup.com/robots.txt
 ```
 Should include sitemap reference
 

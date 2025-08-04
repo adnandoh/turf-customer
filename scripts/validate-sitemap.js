@@ -9,7 +9,7 @@ const https = require('https');
 const { DOMParser } = require('xmldom');
 
 async function validateSitemap() {
-  const sitemapUrl = 'https://turfngroup.com/sitemap.xml';
+  const sitemapUrl = 'https://www.turfngroup.com/sitemap.xml';
   
   console.log('🔍 Validating sitemap...\n');
   
@@ -63,7 +63,7 @@ async function validateSitemap() {
       console.log('\n📝 Next steps for Google Search Console:');
       console.log('1. Go to Google Search Console');
       console.log('2. Navigate to Sitemaps section');
-      console.log('3. Add sitemap URL: https://turfngroup.com/sitemap.xml');
+      console.log('3. Add sitemap URL: https://www.turfngroup.com/sitemap.xml');
       console.log('4. Click Submit');
       
     } catch (xmlError) {

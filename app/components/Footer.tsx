@@ -90,11 +90,6 @@ const Footer = () => {
                   Contact
                 </Link>
               </li>
-              <li>
-                <Link href="/gallery" className="text-gray-600 hover:text-primary transition-colors">
-                  Gallery
-                </Link>
-              </li>
             </ul>
           </div>
 
@@ -103,18 +98,8 @@ const Footer = () => {
             <h3 className="text-xl font-bold mb-4 text-primary">Services</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/amenities" className="text-gray-600 hover:text-primary transition-colors">
-                  Amenities
-                </Link>
-              </li>
-              <li>
-                <Link href="/faq" className="text-gray-600 hover:text-primary transition-colors">
-                  FAQ
-                </Link>
-              </li>
-              <li>
                 <Link href="/book" className="text-gray-600 hover:text-primary transition-colors">
-                  Booking Policy
+                  Book Now
                 </Link>
               </li>
             </ul>

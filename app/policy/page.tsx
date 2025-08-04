@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Shield, Clock, RefreshCw, Users, AlertTriangle, FileText } from 'lucide-react'
+import Breadcrumb from '../components/Breadcrumb'
 
 export const metadata: Metadata = {
   title: 'Policies - Turf N Lonavala',
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
 export default function Policy() {
   return (
     <div className="pt-16">
+      <Breadcrumb />
 
       {/* Policy Sections */}
       <section className="py-16">

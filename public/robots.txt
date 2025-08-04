@@ -4,4 +4,4 @@ Disallow: /api/
 Disallow: /_next/
 Disallow: /admin/
 
-Sitemap: https://turfngroup.com/sitemap.xml
+Sitemap: https://www.turfngroup.com/sitemap.xml

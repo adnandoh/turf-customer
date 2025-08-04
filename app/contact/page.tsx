@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { MapPin, Phone, Mail, Clock } from 'lucide-react'
+import Breadcrumb from '../components/Breadcrumb'
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -27,6 +28,7 @@ export default function Contact() {
 
   return (
     <div className="pt-16">
+      <Breadcrumb />
 
       {/* Contact Information & Form */}
       <section className="py-16">
