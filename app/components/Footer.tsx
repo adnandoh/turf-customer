@@ -81,12 +81,12 @@ const Footer = () => {
             <h3 className="text-xl font-bold mb-4 text-primary">Company</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/about" className="text-gray-600 hover:text-primary transition-colors">
+                <Link href="/about/" className="text-gray-600 hover:text-primary transition-colors">
                   About
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-gray-600 hover:text-primary transition-colors">
+                <Link href="/contact/" className="text-gray-600 hover:text-primary transition-colors">
                   Contact
                 </Link>
               </li>
@@ -98,7 +98,7 @@ const Footer = () => {
             <h3 className="text-xl font-bold mb-4 text-primary">Services</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/book" className="text-gray-600 hover:text-primary transition-colors">
+                <Link href="/book/" className="text-gray-600 hover:text-primary transition-colors">
                   Book Now
                 </Link>
               </li>

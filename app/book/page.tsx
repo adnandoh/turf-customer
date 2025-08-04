@@ -254,15 +254,15 @@ export default function Book() {
                   />
                   <label htmlFor="terms" className="text-sm text-gray-600">
                     I agree to the{' '}
-                    <a href="/policy" className="text-primary hover:underline">
+                    <a href="/policy/" className="text-primary hover:underline">
                       terms and conditions
                     </a>{' '}
                     and{' '}
-                    <a href="/policy" className="text-primary hover:underline">
+                    <a href="/policy/" className="text-primary hover:underline">
                       cancellation policy
                     </a>
                     {' '}and{' '}
-                    <a href="/privacy-policy" className="text-primary hover:underline">
+                    <a href="/policy/" className="text-primary hover:underline">
                       privacy policy
                     </a>
                     .

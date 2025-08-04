@@ -36,18 +36,12 @@ export const breadcrumbConfig: BreadcrumbConfig = {
     label: 'Book Now',
     parent: '/'
   },
-  '/faq': {
-    label: 'FAQ',
-    parent: '/'
-  },
+
   '/policy': {
     label: 'Policies',
     parent: '/'
   },
-  '/privacy-policy': {
-    label: 'Privacy Policy',
-    parent: '/'
-  },
+
   // Sports-specific pages (if they exist)
   '/sports': {
     label: 'Sports',

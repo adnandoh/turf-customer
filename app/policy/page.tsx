@@ -137,16 +137,16 @@ export default function Policy() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="/contact"
+              href="/contact/"
               className="bg-primary text-white px-8 py-3 rounded-full font-semibold hover:bg-primary-dark transition-colors"
             >
               Contact Us
             </a>
             <a
-              href="/faq"
+              href="/book/"
               className="border-2 border-primary text-primary px-8 py-3 rounded-full font-semibold hover:bg-primary hover:text-white transition-colors"
             >
-              View FAQ
+              Book Now
             </a>
           </div>
         </div>

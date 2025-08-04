@@ -211,7 +211,7 @@ export default function About() {
               Call +91 84689 42754
             </a>
             <a
-              href="#"
+              href="/book/"
               className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-primary transition-colors text-center"
             >
               Book Now

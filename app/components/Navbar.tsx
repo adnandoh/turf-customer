@@ -11,8 +11,8 @@ const Navbar = () => {
 
   const navItems = [
     { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'About', href: '/about/' },
+    { name: 'Contact', href: '/contact/' },
   ]
 
   return (
@@ -41,7 +41,7 @@ const Navbar = () => {
               </Link>
             ))}
             <Link
-              href="/book"
+              href="/book/"
               className="bg-primary text-white px-6 py-2 rounded-full font-medium hover:bg-primary-dark transition-colors"
             >
               Book Now
@@ -79,7 +79,7 @@ const Navbar = () => {
               </Link>
             ))}
             <Link
-              href="/book"
+              href="/book/"
               className="block bg-primary text-white px-3 py-2 rounded-md text-base font-medium hover:bg-primary-dark transition-colors"
               onClick={() => setIsOpen(false)}
             >

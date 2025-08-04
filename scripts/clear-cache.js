@@ -12,12 +12,8 @@ const urlsToClear = [
   'https://www.turfngroup.com/sitemap.xml',
   'https://www.turfngroup.com/robots.txt',
   'https://www.turfngroup.com/about/',
-  'https://www.turfngroup.com/amenities/',
-  'https://www.turfngroup.com/gallery/',
   'https://www.turfngroup.com/contact/',
-  'https://www.turfngroup.com/faq/',
   'https://www.turfngroup.com/book/',
-  'https://www.turfngroup.com/privacy-policy/',
   'https://www.turfngroup.com/policy/'
 ];
 

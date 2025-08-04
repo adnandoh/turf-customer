@@ -176,7 +176,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Why Pick Turf N
+              Why Pick Turf N Lonavala
             </h2>
           </div>
 
@@ -261,95 +261,229 @@ export default function Home() {
               Simple Pricing Snapshot
             </h2>
             <p className="text-xl text-gray-600">
-              You can check here <strong>football turf cost</strong> & <strong>cricket turf cost</strong> for different time frame:
+              Check our competitive rates for different sports and time slots
             </p>
           </div>
 
-          {/* Mobile-friendly rate cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:hidden">
-            <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
-              <div className="bg-primary text-white p-4 text-center font-semibold">
-                Weekdays 6 am – 6 pm
-              </div>
-              <div className="p-6 text-center">
-                <div className="text-3xl font-bold text-primary mb-2">₹800</div>
-                <div className="text-gray-600">per hour</div>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
-              <div className="bg-primary text-white p-4 text-center font-semibold">
-                Weekdays 6 pm – 6 am
-              </div>
-              <div className="p-6 text-center">
-                <div className="text-3xl font-bold text-primary mb-2">₹1,100</div>
-                <div className="text-gray-600">per hour</div>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
-              <div className="bg-primary text-white p-4 text-center font-semibold">
-                Weekends & Holidays 6 am – 6 pm
-              </div>
-              <div className="p-6 text-center">
-                <div className="text-3xl font-bold text-primary mb-2">₹1,000</div>
-                <div className="text-gray-600">per hour</div>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
-              <div className="bg-primary text-white p-4 text-center font-semibold">
-                Weekends & Holidays 6 pm – 6 am
-              </div>
-              <div className="p-6 text-center">
-                <div className="text-3xl font-bold text-primary mb-2">₹1,300</div>
-                <div className="text-gray-600">per hour</div>
-              </div>
-            </div>
-          </div>
-
           {/* Desktop table view */}
-          <div className="hidden md:block overflow-hidden rounded-lg border border-gray-200 shadow-sm">
+          <div className="overflow-hidden rounded-lg border border-gray-200 shadow-sm">
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
                   <tr>
-                    <th className="bg-primary text-white p-4 text-center font-semibold">Time Slot</th>
-                    <th className="bg-primary text-white p-4 text-center font-semibold">Duration</th>
-                    <th className="bg-primary text-white p-4 text-center font-semibold">Charges</th>
+                    <th className="bg-primary text-white p-4 text-left font-semibold">Game</th>
+                    <th className="bg-primary text-white p-4 text-center font-semibold">Weekdays Morning</th>
+                    <th className="bg-primary text-white p-4 text-center font-semibold">Weekdays Night</th>
+                    <th className="bg-primary text-white p-4 text-center font-semibold">Weekend Morning</th>
+                    <th className="bg-primary text-white p-4 text-center font-semibold">Weekend Night</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr className="border-b border-gray-200 bg-white">
-                    <td className="p-4 text-center">Weekdays 6 am – 6 pm</td>
-                    <td className="p-4 text-center">1 hour</td>
+                    <td className="p-4 font-medium text-gray-900">Cricket</td>
                     <td className="p-4 text-center">
-                      <span className="inline-block bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹800</span>
+                      <span className="inline-block bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹700</span>
+                    </td>
+                    <td className="p-4 text-center">
+                      <span className="inline-block bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹1000</span>
+                    </td>
+                    <td className="p-4 text-center">
+                      <span className="inline-block bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹1000</span>
+                    </td>
+                    <td className="p-4 text-center">
+                      <span className="inline-block bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹1200</span>
                     </td>
                   </tr>
                   <tr className="border-b border-gray-200 bg-gray-50">
-                    <td className="p-4 text-center">Weekdays 6 pm – 6 am</td>
-                    <td className="p-4 text-center">1 hour</td>
+                    <td className="p-4 font-medium text-gray-900">Tennis</td>
                     <td className="p-4 text-center">
-                      <span className="inline-block bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹1,100</span>
+                      <span className="inline-block bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹700</span>
+                    </td>
+                    <td className="p-4 text-center">
+                      <span className="inline-block bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹1000</span>
+                    </td>
+                    <td className="p-4 text-center">
+                      <span className="inline-block bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹1000</span>
+                    </td>
+                    <td className="p-4 text-center">
+                      <span className="inline-block bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹1200</span>
                     </td>
                   </tr>
                   <tr className="border-b border-gray-200 bg-white">
-                    <td className="p-4 text-center">Weekends & Holidays 6 am – 6 pm</td>
-                    <td className="p-4 text-center">1 hour</td>
+                    <td className="p-4 font-medium text-gray-900">Pickleball</td>
                     <td className="p-4 text-center">
-                      <span className="inline-block bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹1,000</span>
+                      <span className="inline-block bg-blue-100 text-blue-800 py-1 px-3 rounded-full font-medium">₹500</span>
+                    </td>
+                    <td className="p-4 text-center">
+                      <span className="inline-block bg-blue-100 text-blue-800 py-1 px-3 rounded-full font-medium">₹600</span>
+                    </td>
+                    <td className="p-4 text-center">
+                      <span className="inline-block bg-blue-100 text-blue-800 py-1 px-3 rounded-full font-medium">₹600</span>
+                    </td>
+                    <td className="p-4 text-center">
+                      <span className="inline-block bg-blue-100 text-blue-800 py-1 px-3 rounded-full font-medium">₹600</span>
                     </td>
                   </tr>
-                  <tr className="bg-gray-50">
-                    <td className="p-4 text-center">Weekends & Holidays 6 pm – 6 am</td>
-                    <td className="p-4 text-center">1 hour</td>
+                  <tr className="border-b border-gray-200 bg-gray-50">
+                    <td className="p-4 font-medium text-gray-900">Football</td>
                     <td className="p-4 text-center">
-                      <span className="inline-block bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹1,300</span>
+                      <span className="inline-block bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹700</span>
+                    </td>
+                    <td className="p-4 text-center">
+                      <span className="inline-block bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹1000</span>
+                    </td>
+                    <td className="p-4 text-center">
+                      <span className="inline-block bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹1000</span>
+                    </td>
+                    <td className="p-4 text-center">
+                      <span className="inline-block bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹1200</span>
+                    </td>
+                  </tr>
+                  <tr className="bg-white">
+                    <td className="p-4 font-medium text-gray-900">Full Ground</td>
+                    <td className="p-4 text-center">
+                      <span className="inline-block bg-orange-100 text-orange-800 py-1 px-3 rounded-full font-medium">₹1400</span>
+                    </td>
+                    <td className="p-4 text-center">
+                      <span className="inline-block bg-orange-100 text-orange-800 py-1 px-3 rounded-full font-medium">₹2000</span>
+                    </td>
+                    <td className="p-4 text-center">
+                      <span className="inline-block bg-orange-100 text-orange-800 py-1 px-3 rounded-full font-medium">₹2000</span>
+                    </td>
+                    <td className="p-4 text-center">
+                      <span className="inline-block bg-orange-100 text-orange-800 py-1 px-3 rounded-full font-medium">₹2400</span>
                     </td>
                   </tr>
                 </tbody>
               </table>
+            </div>
+          </div>
+
+          {/* Mobile-friendly cards */}
+          <div className="grid grid-cols-1 gap-6 md:hidden mt-8">
+            {/* Cricket */}
+            <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
+              <div className="bg-primary text-white p-4 text-center font-semibold">
+                Cricket
+              </div>
+              <div className="p-4 space-y-3">
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-600">Weekdays Morning</span>
+                  <span className="bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹700</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-600">Weekdays Night</span>
+                  <span className="bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹1000</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-600">Weekend Morning</span>
+                  <span className="bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹1000</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-600">Weekend Night</span>
+                  <span className="bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹1200</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Tennis */}
+            <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
+              <div className="bg-primary text-white p-4 text-center font-semibold">
+                Tennis
+              </div>
+              <div className="p-4 space-y-3">
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-600">Weekdays Morning</span>
+                  <span className="bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹700</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-600">Weekdays Night</span>
+                  <span className="bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹1000</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-600">Weekend Morning</span>
+                  <span className="bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹1000</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-600">Weekend Night</span>
+                  <span className="bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹1200</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Pickleball */}
+            <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
+              <div className="bg-primary text-white p-4 text-center font-semibold">
+                Pickleball
+              </div>
+              <div className="p-4 space-y-3">
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-600">Weekdays Morning</span>
+                  <span className="bg-blue-100 text-blue-800 py-1 px-3 rounded-full font-medium">₹500</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-600">Weekdays Night</span>
+                  <span className="bg-blue-100 text-blue-800 py-1 px-3 rounded-full font-medium">₹600</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-600">Weekend Morning</span>
+                  <span className="bg-blue-100 text-blue-800 py-1 px-3 rounded-full font-medium">₹600</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-600">Weekend Night</span>
+                  <span className="bg-blue-100 text-blue-800 py-1 px-3 rounded-full font-medium">₹600</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Football */}
+            <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
+              <div className="bg-primary text-white p-4 text-center font-semibold">
+                Football
+              </div>
+              <div className="p-4 space-y-3">
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-600">Weekdays Morning</span>
+                  <span className="bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹700</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-600">Weekdays Night</span>
+                  <span className="bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹1000</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-600">Weekend Morning</span>
+                  <span className="bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹1000</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-600">Weekend Night</span>
+                  <span className="bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹1200</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Full Ground */}
+            <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
+              <div className="bg-primary text-white p-4 text-center font-semibold">
+                Full Ground
+              </div>
+              <div className="p-4 space-y-3">
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-600">Weekdays Morning</span>
+                  <span className="bg-orange-100 text-orange-800 py-1 px-3 rounded-full font-medium">₹1400</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-600">Weekdays Night</span>
+                  <span className="bg-orange-100 text-orange-800 py-1 px-3 rounded-full font-medium">₹2000</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-600">Weekend Morning</span>
+                  <span className="bg-orange-100 text-orange-800 py-1 px-3 rounded-full font-medium">₹2000</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-600">Weekend Night</span>
+                  <span className="bg-orange-100 text-orange-800 py-1 px-3 rounded-full font-medium">₹2400</span>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -622,7 +756,7 @@ export default function Home() {
                         <div className="text-xs text-gray-600">Fresh refreshments on-site</div>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg border border-blue-200 hover:shadow-md transition-all duration-300 group">
                       <div className="text-xl">🚂</div>
                       <div>
@@ -631,7 +765,7 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                  
+
                   {/* Second row: 2 items side by side */}
                   <div className="grid grid-cols-2 gap-3">
                     <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-cyan-50 to-cyan-100 rounded-lg border border-cyan-200 hover:shadow-md transition-all duration-300 group">
@@ -641,7 +775,7 @@ export default function Home() {
                         <div className="text-xs text-gray-600">1km scenic walk</div>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-center space-x-3 p-3 bg-gradient-to-r from-green-50 to-green-100 rounded-lg border border-green-200 hover:shadow-md transition-all duration-300 group">
                       <div className="text-xl">🏨</div>
                       <div>
@@ -650,7 +784,7 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                  
+
                   {/* Third row: 1 item full width */}
                   <div className="flex items-center space-x-3 p-4 bg-gradient-to-r from-purple-50 to-purple-100 rounded-lg border border-purple-200 hover:shadow-md transition-all duration-300 group">
                     <div className="text-2xl">⛰️</div>

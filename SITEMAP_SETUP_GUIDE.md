@@ -74,7 +74,7 @@ After deployment and submission:
    - Wait 24 hours for Google to re-crawl
 
 2. **Manual Verification**:
-   - Check `https://turfngroup.com/sitemap.xml` loads
+   - Check `https://www.turfngroup.com/sitemap.xml` loads
    - Verify Content-Type is `application/xml`
    - Ensure no 404 errors
 
