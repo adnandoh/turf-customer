@@ -24,11 +24,11 @@ const Navbar = () => {
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0 flex items-center">
               <Image
-                src="/gallery/TURF N Lonavalal logo.svg"
-                alt="Turf N Lonavala Logo"
-                width={150}
-                height={32}
-                className="h-8 w-auto"
+                src="/logo.svg"
+                alt="Turf N Lonavala - Premium Sports Turf in Lonavala"
+                width={154}
+                height={24}
+                className="h-6 w-auto sm:h-8 sm:w-auto"
                 priority
               />
             </Link>
