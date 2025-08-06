@@ -18,7 +18,7 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-              About Turf N Group – At a Glance
+              About Turf N Group - At a Glance
             </h1>
           </div>
         </div>
@@ -131,41 +131,6 @@ export default function About() {
                     Secure your slot online in seconds—no phone tag required.
                   </p>
                 </div>
-              </div>
-            </div>
-            {/* Image Right */}
-            <div className="relative h-96 w-full rounded-2xl overflow-hidden shadow-2xl">
-              <Image
-                src="/gallery/turf Surrounded by Hills.png"
-                alt="Sports turf surrounded by beautiful hills and mountains in Lonavala"
-                fill
-                className="object-cover w-full h-full"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Section 4: LED Lighting Features - Image Left, Content Right */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Image Left */}
-            <div className="order-2 lg:order-1">
-              <div className="relative h-96 w-full rounded-2xl overflow-hidden shadow-2xl">
-                <Image
-                  src="/gallery/LED Lights at Night.png"
-                  alt="Professional LED floodlights illuminating the turf for night games"
-                  fill
-                  className="object-cover w-full h-full"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
-            </div>
-            {/* Content Right */}
-            <div className="order-1 lg:order-2">
-              <div className="space-y-6">
                 <div>
                   <h3 className="text-xl font-bold text-gray-900 mb-3">
                     <strong>All-weather lighting:</strong>
@@ -184,9 +149,21 @@ export default function About() {
                 </div>
               </div>
             </div>
+            {/* Image Right */}
+            <div className="relative h-96 w-full rounded-2xl overflow-hidden shadow-2xl">
+              <Image
+                src="/gallery/turf Surrounded by Hills.png"
+                alt="Sports turf surrounded by beautiful hills and mountains in Lonavala"
+                fill
+                className="object-cover w-full h-full"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
           </div>
         </div>
       </section>
+
+
 
       {/* Join the Game Section */}
       <section className="py-20 bg-gradient-to-br from-primary to-green-600 text-white">

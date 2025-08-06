@@ -120,8 +120,8 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center py-8 md:py-12 lg:py-20">
             {/* Left side - Content */}
             <div className="flex flex-col justify-center items-start lg:pr-8">
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight text-gray-900">
-                Play Cricket & Football, Any Hour — Sports Turf in Lonavala | Turf N Group
+              <h1 className="text-3xl sm:text-4xl lg:text-[2.5rem] font-bold mb-6 text-gray-900">
+                Play Cricket & Football, Any Hour - Sports Turf in Lonavala
               </h1>
               <p className="text-lg sm:text-xl mb-8 leading-relaxed text-gray-600">
                 Two all-weather grounds for cricket, football. Easy hassle free <strong className="text-gray-800">turf booking</strong> in seconds and full refund up to 6 hours before play. No questions asked!
@@ -162,7 +162,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-bold text-gray-900 mb-6">
-              Lonavala's Favourite Sports Turf — Ready When You Are
+              Lonavala's Favourite Sports Turf - Ready When You Are
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed">
               Looking for a sports turf that feels close-by yet miles from city chaos? Welcome to Turf N Group in Lonavala —your go-to spot for quick, hassle-free <strong>turf booking</strong> any time of day. Whether it's a late-night five-a-side on our <strong>football turf</strong>, early-morning nets on the <strong>cricket turf</strong>, we've built these all-weather grounds so you can play when your mood says. Book a slot in seconds, park for free, gear up on-site, and breathe in that cool mountain air before the whistle blows.
@@ -359,133 +359,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Mobile-friendly cards */}
-          <div className="grid grid-cols-1 gap-6 md:hidden mt-8">
-            {/* Cricket */}
-            <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
-              <div className="bg-primary text-white p-4 text-center font-semibold">
-                Cricket
-              </div>
-              <div className="p-4 space-y-3">
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Weekdays Morning</span>
-                  <span className="bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹700</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Weekdays Night</span>
-                  <span className="bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹1000</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Weekend Morning</span>
-                  <span className="bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹1000</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Weekend Night</span>
-                  <span className="bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹1200</span>
-                </div>
-              </div>
-            </div>
 
-            {/* Tennis */}
-            <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
-              <div className="bg-primary text-white p-4 text-center font-semibold">
-                Tennis
-              </div>
-              <div className="p-4 space-y-3">
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Weekdays Morning</span>
-                  <span className="bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹700</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Weekdays Night</span>
-                  <span className="bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹1000</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Weekend Morning</span>
-                  <span className="bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹1000</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Weekend Night</span>
-                  <span className="bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹1200</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Pickleball */}
-            <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
-              <div className="bg-primary text-white p-4 text-center font-semibold">
-                Pickleball
-              </div>
-              <div className="p-4 space-y-3">
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Weekdays Morning</span>
-                  <span className="bg-blue-100 text-blue-800 py-1 px-3 rounded-full font-medium">₹500</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Weekdays Night</span>
-                  <span className="bg-blue-100 text-blue-800 py-1 px-3 rounded-full font-medium">₹600</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Weekend Morning</span>
-                  <span className="bg-blue-100 text-blue-800 py-1 px-3 rounded-full font-medium">₹600</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Weekend Night</span>
-                  <span className="bg-blue-100 text-blue-800 py-1 px-3 rounded-full font-medium">₹600</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Football */}
-            <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
-              <div className="bg-primary text-white p-4 text-center font-semibold">
-                Football
-              </div>
-              <div className="p-4 space-y-3">
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Weekdays Morning</span>
-                  <span className="bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹700</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Weekdays Night</span>
-                  <span className="bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹1000</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Weekend Morning</span>
-                  <span className="bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹1000</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Weekend Night</span>
-                  <span className="bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹1200</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Full Ground */}
-            <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
-              <div className="bg-primary text-white p-4 text-center font-semibold">
-                Full Ground
-              </div>
-              <div className="p-4 space-y-3">
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Weekdays Morning</span>
-                  <span className="bg-orange-100 text-orange-800 py-1 px-3 rounded-full font-medium">₹1400</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Weekdays Night</span>
-                  <span className="bg-orange-100 text-orange-800 py-1 px-3 rounded-full font-medium">₹2000</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Weekend Morning</span>
-                  <span className="bg-orange-100 text-orange-800 py-1 px-3 rounded-full font-medium">₹2000</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Weekend Night</span>
-                  <span className="bg-orange-100 text-orange-800 py-1 px-3 rounded-full font-medium">₹2400</span>
-                </div>
-              </div>
-            </div>
-          </div>
 
           <div className="text-center mt-8">
             <p className="text-gray-600">

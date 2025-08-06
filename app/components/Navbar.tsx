@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 
@@ -18,34 +19,47 @@ const Navbar = () => {
   return (
     <nav className="bg-white shadow-lg fixed w-full top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0 flex items-center">
-              <span className="text-2xl font-bold text-primary">Turf N Lonavala</span>
+              <Image
+                src="/gallery/TURF N Lonavalal logo.svg"
+                alt="Turf N Lonavala Logo"
+                width={150}
+                height={32}
+                className="h-8 w-auto"
+                priority
+              />
             </Link>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                  pathname === item.href
-                    ? 'text-primary bg-green-50'
-                    : 'text-gray-700 hover:text-primary hover:bg-green-50'
-                }`}
-              >
-                {item.name}
-              </Link>
-            ))}
-            <Link
-              href="/book/"
+          {/* Centered Desktop Navigation */}
+          <div className="hidden md:flex items-center justify-center flex-1">
+            <div className="flex items-center space-x-8">
+              {navItems.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${pathname === item.href
+                      ? 'text-primary bg-green-50'
+                      : 'text-gray-700 hover:text-primary hover:bg-green-50'
+                    }`}
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Book Now Button */}
+          <div className="hidden md:flex items-center">
+            <a
+              href="tel:+918468942754"
               className="bg-primary text-white px-6 py-2 rounded-full font-medium hover:bg-primary-dark transition-colors"
             >
               Book Now
-            </Link>
+            </a>
           </div>
 
           {/* Mobile menu button */}
@@ -68,23 +82,22 @@ const Navbar = () => {
               <Link
                 key={item.name}
                 href={item.href}
-                className={`block px-3 py-2 rounded-md text-base font-medium ${
-                  pathname === item.href
+                className={`block px-3 py-2 rounded-md text-base font-medium ${pathname === item.href
                     ? 'text-primary bg-green-50'
                     : 'text-gray-700 hover:text-primary hover:bg-green-50'
-                }`}
+                  }`}
                 onClick={() => setIsOpen(false)}
               >
                 {item.name}
               </Link>
             ))}
-            <Link
-              href="/book/"
+            <a
+              href="tel:+918468942754"
               className="block bg-primary text-white px-3 py-2 rounded-md text-base font-medium hover:bg-primary-dark transition-colors"
               onClick={() => setIsOpen(false)}
             >
               Book Now
-            </Link>
+            </a>
           </div>
         </div>
       )}
