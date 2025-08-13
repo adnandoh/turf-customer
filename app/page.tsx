@@ -1,51 +1,33 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { MapPin, Calendar, Users, Star, Clock, Car, Lightbulb, Droplets, Shield } from 'lucide-react'
-import Image from 'next/image'
+import { useState, useEffect, useMemo, useCallback } from 'react'
+import { Star, Car, Shield, Droplets, Lightbulb, Users } from 'lucide-react'
+import dynamic from 'next/dynamic'
 import Breadcrumb from './components/Breadcrumb'
+
+// Lazy load heavy components
+const HeroSection = dynamic(() => import('./components/HeroSection'), {
+  loading: () => <div className="h-96 bg-gray-100 animate-pulse" />
+})
+
+const FeaturesSection = dynamic(() => import('./components/FeaturesSection'), {
+  loading: () => <div className="h-96 bg-gray-100 animate-pulse" />
+})
+
+const PricingSection = dynamic(() => import('./components/PricingSection'), {
+  loading: () => <div className="h-96 bg-gray-100 animate-pulse" />
+})
+
+const GallerySection = dynamic(() => import('./components/GallerySection'), {
+  loading: () => <div className="h-96 bg-gray-100 animate-pulse" />
+})
 
 export default function Home() {
   const [showFAQ, setShowFAQ] = useState<number | null>(null)
   const [showScrollButton, setShowScrollButton] = useState(false)
 
-  // Add scroll-triggered animations and button visibility
-  useEffect(() => {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible')
-        }
-      })
-    }, observerOptions)
-
-    // Observe all elements with scroll-animate class
-    const animateElements = document.querySelectorAll('.scroll-animate')
-    animateElements.forEach((el) => observer.observe(el))
-
-    // Handle scroll for sticky button visibility
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY
-      const windowHeight = window.innerHeight
-
-      // Show button after scrolling down 100vh (one full screen)
-      setShowScrollButton(scrollPosition > windowHeight)
-    }
-
-    window.addEventListener('scroll', handleScroll)
-
-    return () => {
-      animateElements.forEach((el) => observer.unobserve(el))
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
-
-  const testimonials = [
+  // Memoize static data
+  const testimonials = useMemo(() => [
     {
       text: "Best lighting for night cricket in the region — we've switched here permanently. The LED floodlights provide excellent visibility and the turf quality is outstanding.",
       name: "Rajesh Kumar",
@@ -78,9 +60,9 @@ export default function Home() {
       date: "1 week ago",
       avatar: "SD"
     }
-  ]
+  ], [])
 
-  const faqs = [
+  const faqs = useMemo(() => [
     {
       question: "How do I book a turf slot?",
       answer: "Hit 'Book Now' button or WhatsApp us at +91 84689 42754. You can also call us directly for instant booking."
@@ -101,61 +83,53 @@ export default function Home() {
       question: "What are the football turf cost and cricket turf price?",
       answer: "Weekdays 6am-6pm: ₹800/hr, 6pm-6am: ₹1,100/hr. Weekends 6am-6pm: ₹1,000/hr, 6pm-6am: ₹1,300/hr."
     }
-  ]
+  ], [])
 
-  const homeBreadcrumbs = [
+  const homeBreadcrumbs = useMemo(() => [
     { label: 'Home', href: '/', isCurrentPage: true }
-  ]
+  ], [])
+
+  // Optimized scroll handler with useCallback
+  const handleScroll = useCallback(() => {
+    const scrollPosition = window.scrollY
+    const windowHeight = window.innerHeight
+    setShowScrollButton(scrollPosition > windowHeight)
+  }, [])
+
+  // Add scroll-triggered animations and button visibility
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible')
+        }
+      })
+    }, observerOptions)
+
+    // Observe all elements with scroll-animate class
+    const animateElements = document.querySelectorAll('.scroll-animate')
+    animateElements.forEach((el) => observer.observe(el))
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+
+    return () => {
+      animateElements.forEach((el) => observer.unobserve(el))
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [handleScroll])
 
   return (
     <div>
       {/* SEO Breadcrumb for Home Page */}
       <Breadcrumb items={homeBreadcrumbs} className="hidden" />
+      
       {/* Hero Section */}
-      <section className="relative lg:min-h-[calc(100vh-64px)] flex items-start pt-12 md:pt-16">
-        {/* Light gradient background */}
-        <div className="absolute inset-0 z-0" style={{ background: 'linear-gradient(90deg, rgb(232, 245, 233), rgb(255, 255, 255))' }}></div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10 relative">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center py-8 md:py-12 lg:py-20">
-            {/* Left side - Content */}
-            <div className="flex flex-col justify-center items-start lg:pr-8">
-              <h1 className="text-3xl sm:text-4xl lg:text-[2.5rem] font-bold mb-6 text-gray-900">
-                Play Cricket & Football, Any Hour - Sports Turf in Lonavala
-              </h1>
-              <p className="text-lg sm:text-xl mb-8 leading-relaxed text-gray-600">
-                Two all-weather grounds for cricket, football. Easy hassle free <strong className="text-gray-800">turf booking</strong> in seconds and full refund up to 6 hours before play. No questions asked!
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-                <a
-                  href="tel:+918468942754"
-                  className="bg-yellow-400 text-gray-900 px-8 py-4 rounded-full font-bold hover:bg-yellow-300 transition-colors shadow-lg text-center transform hover:scale-105"
-                >
-                  Book Now
-                </a>
-                <a
-                  href="tel:+918468942754"
-                  className="border-2 border-green-600 text-green-700 px-8 py-4 rounded-full font-semibold hover:bg-green-600 hover:text-white transition-colors text-center"
-                >
-                  Call +91 84689 42754
-                </a>
-              </div>
-            </div>
-
-            {/* Right side - Image - Now visible on all devices */}
-            <div className="relative w-full h-64 sm:h-80 lg:h-96 max-w-md mx-auto lg:max-w-none rounded-2xl overflow-hidden shadow-2xl">
-              <Image
-                src="/gallery/heroimage.png"
-                alt="Turf N Group - Sports Facility in Lonavala"
-                fill
-                className="object-contain"
-                priority
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroSection />
 
       {/* Introduction Section */}
       <section className="py-16 bg-white">
@@ -171,203 +145,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Why Pick Turf N Section - 3 Column Highlights */}
-      <section className="py-16 bg-gradient-to-br from-gray-50 to-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Why Pick Turf N Lonavala
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            <div className="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 text-center border border-gray-100">
-              <div className="bg-gradient-to-br from-primary to-green-600 text-white w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Clock size={36} />
-              </div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-800">Always Open, Always On</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Play anytime, late nights or dawn, our gates stay unlocked and staff are available 24/7 year-round for every player.
-              </p>
-              <div className="mt-4 w-12 h-1 bg-gradient-to-r from-primary to-green-600 mx-auto rounded-full"></div>
-            </div>
-
-            <div className="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 text-center border border-gray-100">
-              <div className="bg-gradient-to-br from-primary to-green-600 text-white w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Users size={36} />
-              </div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-800">Multi-Sport Dual Turfs Ready</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Two adjacent turfs have marked lines, allowing you to swap between cricket, football, or any other game you prefer.
-              </p>
-              <div className="mt-4 w-12 h-1 bg-gradient-to-r from-primary to-green-600 mx-auto rounded-full"></div>
-            </div>
-
-            <div className="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 text-center border border-gray-100">
-              <div className="bg-gradient-to-br from-primary to-green-600 text-white w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <MapPin size={36} />
-              </div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-800">Scenic Mountain-View Atmosphere</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Fresh hillside air and panoramic Western Ghats scenery transform everyday games into memorable, energising sporting escapes.
-              </p>
-              <div className="mt-4 w-12 h-1 bg-gradient-to-r from-primary to-green-600 mx-auto rounded-full"></div>
-            </div>
-          </div>
-
-          {/* Extended Features Grid - Second row of features */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 text-center border border-gray-100">
-              <div className="bg-gradient-to-br from-primary to-green-600 text-white w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Calendar size={36} />
-              </div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-800">Fast Booking, Easy Refunds</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Reserve your slot online in thirty seconds if you'd like. You can cancel up to six hours beforehand for a full refund, no questions asked.
-              </p>
-              <div className="mt-4 w-12 h-1 bg-gradient-to-r from-primary to-green-600 mx-auto rounded-full"></div>
-            </div>
-
-            <div className="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 text-center border border-gray-100">
-              <div className="bg-gradient-to-br from-primary to-green-600 text-white w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Lightbulb size={36} />
-              </div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-800">LED Lighting Everywhere</h3>
-              <p className="text-gray-600 leading-relaxed">
-                200 Watts floodlights erase glare, provide crystal-clear vision and a professional, broadcast-quality night match for everyone.
-              </p>
-              <div className="mt-4 w-12 h-1 bg-gradient-to-r from-primary to-green-600 mx-auto rounded-full"></div>
-            </div>
-
-            <div className="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 text-center border border-gray-100">
-              <div className="bg-gradient-to-br from-primary to-green-600 text-white w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Car size={36} />
-              </div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-800">Free Parking, Gear Included</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Drive straight in, park free, collect complimentary bats, balls, paddles, and count on staff for assistance.
-              </p>
-              <div className="mt-4 w-12 h-1 bg-gradient-to-r from-primary to-green-600 mx-auto rounded-full"></div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Features Section */}
+      <FeaturesSection />
 
       {/* Pricing Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Simple Pricing Snapshot
-            </h2>
-            <p className="text-xl text-gray-600">
-              Check our competitive rates for different sports and time slots
-            </p>
-          </div>
-
-          {/* Desktop table view */}
-          <div className="overflow-hidden rounded-lg border border-gray-200 shadow-sm">
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead>
-                  <tr>
-                    <th className="bg-primary text-white p-4 text-left font-semibold">Game</th>
-                    <th className="bg-primary text-white p-4 text-center font-semibold">Weekdays Morning</th>
-                    <th className="bg-primary text-white p-4 text-center font-semibold">Weekdays Night</th>
-                    <th className="bg-primary text-white p-4 text-center font-semibold">Weekend Morning</th>
-                    <th className="bg-primary text-white p-4 text-center font-semibold">Weekend Night</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr className="border-b border-gray-200 bg-white">
-                    <td className="p-4 font-medium text-gray-900">Cricket</td>
-                    <td className="p-4 text-center">
-                      <span className="inline-block bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹700</span>
-                    </td>
-                    <td className="p-4 text-center">
-                      <span className="inline-block bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹1000</span>
-                    </td>
-                    <td className="p-4 text-center">
-                      <span className="inline-block bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹1000</span>
-                    </td>
-                    <td className="p-4 text-center">
-                      <span className="inline-block bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹1200</span>
-                    </td>
-                  </tr>
-                  <tr className="border-b border-gray-200 bg-gray-50">
-                    <td className="p-4 font-medium text-gray-900">Tennis</td>
-                    <td className="p-4 text-center">
-                      <span className="inline-block bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹700</span>
-                    </td>
-                    <td className="p-4 text-center">
-                      <span className="inline-block bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹1000</span>
-                    </td>
-                    <td className="p-4 text-center">
-                      <span className="inline-block bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹1000</span>
-                    </td>
-                    <td className="p-4 text-center">
-                      <span className="inline-block bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹1200</span>
-                    </td>
-                  </tr>
-                  <tr className="border-b border-gray-200 bg-white">
-                    <td className="p-4 font-medium text-gray-900">Pickleball</td>
-                    <td className="p-4 text-center">
-                      <span className="inline-block bg-blue-100 text-blue-800 py-1 px-3 rounded-full font-medium">₹500</span>
-                    </td>
-                    <td className="p-4 text-center">
-                      <span className="inline-block bg-blue-100 text-blue-800 py-1 px-3 rounded-full font-medium">₹600</span>
-                    </td>
-                    <td className="p-4 text-center">
-                      <span className="inline-block bg-blue-100 text-blue-800 py-1 px-3 rounded-full font-medium">₹600</span>
-                    </td>
-                    <td className="p-4 text-center">
-                      <span className="inline-block bg-blue-100 text-blue-800 py-1 px-3 rounded-full font-medium">₹600</span>
-                    </td>
-                  </tr>
-                  <tr className="border-b border-gray-200 bg-gray-50">
-                    <td className="p-4 font-medium text-gray-900">Football</td>
-                    <td className="p-4 text-center">
-                      <span className="inline-block bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹700</span>
-                    </td>
-                    <td className="p-4 text-center">
-                      <span className="inline-block bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹1000</span>
-                    </td>
-                    <td className="p-4 text-center">
-                      <span className="inline-block bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹1000</span>
-                    </td>
-                    <td className="p-4 text-center">
-                      <span className="inline-block bg-green-100 text-green-800 py-1 px-3 rounded-full font-medium">₹1200</span>
-                    </td>
-                  </tr>
-                  <tr className="bg-white">
-                    <td className="p-4 font-medium text-gray-900">Full Ground</td>
-                    <td className="p-4 text-center">
-                      <span className="inline-block bg-orange-100 text-orange-800 py-1 px-3 rounded-full font-medium">₹1400</span>
-                    </td>
-                    <td className="p-4 text-center">
-                      <span className="inline-block bg-orange-100 text-orange-800 py-1 px-3 rounded-full font-medium">₹2000</span>
-                    </td>
-                    <td className="p-4 text-center">
-                      <span className="inline-block bg-orange-100 text-orange-800 py-1 px-3 rounded-full font-medium">₹2000</span>
-                    </td>
-                    <td className="p-4 text-center">
-                      <span className="inline-block bg-orange-100 text-orange-800 py-1 px-3 rounded-full font-medium">₹2400</span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-
-
-          <div className="text-center mt-8">
-            <p className="text-gray-600">
-              Need a tournament block or corporate booking? Reach out and we'll customise a package.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PricingSection />
 
       {/* Sports We Host Section */}
       <section className="py-16 bg-gradient-to-br from-gray-50 to-white">
@@ -419,94 +201,7 @@ export default function Home() {
       </section>
 
       {/* Gallery Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Gallery
-            </h2>
-            <p className="text-xl text-gray-600">
-              Take a look at our world-class sports facilities and vibrant atmosphere
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
-              <div className="aspect-[4/3] relative">
-                <Image
-                  src="/gallery/ChatGPT Image Jul 25, 2025, 04_57_12 PM.png"
-                  alt="Turf N Lonavala Sports Facility"
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </div>
-            </div>
-
-            <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
-              <div className="aspect-[4/3] relative">
-                <Image
-                  src="/gallery/WhatsApp Image 2025-07-25 at 16.47.44_ee4f52ab.jpg"
-                  alt="Football Turf at Turf N Lonavala"
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </div>
-            </div>
-
-            <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
-              <div className="aspect-[4/3] relative">
-                <Image
-                  src="/gallery/WhatsApp Image 2025-07-25 at 16.47.54_728dc4a6.jpg"
-                  alt="Cricket Ground at Turf N Lonavala"
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </div>
-            </div>
-
-            <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
-              <div className="aspect-[4/3] relative">
-                <Image
-                  src="/gallery/WhatsApp Image 2025-07-25 at 16.52.15_e00ca2f3.jpg"
-                  alt="Sports Activities at Turf N Lonavala"
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </div>
-            </div>
-
-            <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
-              <div className="aspect-[4/3] relative">
-                <Image
-                  src="/gallery/WhatsApp Image 2025-07-25 at 16.52.58_38a1030b.jpg"
-                  alt="Night Games at Turf N Lonavala"
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </div>
-            </div>
-
-            {/* Call-to-action card as the 6th item */}
-            <div className="group bg-gradient-to-br from-primary to-green-600 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center text-center text-white p-8">
-              <div>
-                <h3 className="text-2xl font-bold mb-4">Visit Us Today!</h3>
-                <p className="text-lg mb-6 opacity-90">Experience the best sports facilities in Lonavala</p>
-                <a
-                  href="tel:+918468942754"
-                  className="bg-white text-primary px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors inline-block"
-                >
-                  Book Now
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <GallerySection />
 
       {/* Google-Style Reviews Section */}
       <section className="py-16 bg-white">

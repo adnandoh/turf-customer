@@ -13,7 +13,12 @@
     "clean": "rm -rf .next out",
     "clear-cache": "node scripts/clear-cache.js",
     "validate-sitemap": "node scripts/validate-sitemap.js",
-    "deploy": "npm run build && npm run clear-cache"
+    "optimize-images": "node scripts/optimize-images.js",
+    "performance-audit": "node scripts/performance-audit.js",
+    "code-audit": "node scripts/code-audit.js",
+    "performance-summary": "node scripts/performance-summary.js",
+    "cleanup-images": "node scripts/cleanup-old-images.js",
+    "deploy": "npm run optimize-images && npm run build && npm run clear-cache"
   },
   "dependencies": {
     "@next/third-parties": "^14.0.0",
@@ -21,7 +26,8 @@
     "next": "14.0.0",
     "react": "^18",
     "react-dom": "^18",
-    "react-icons": "^5.5.0"
+    "react-icons": "^5.5.0",
+    "web-vitals": "^5.1.0"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -31,6 +37,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.0.0",
     "postcss": "^8",
+    "sharp": "^0.34.3",
     "tailwindcss": "^3.3.0",
     "typescript": "^5",
     "xmldom": "^0.6.0"

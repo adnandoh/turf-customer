@@ -1,90 +1,92 @@
-/* Font is loaded via Next.js font optimization in layout.tsx */
+/* Performance-optimized CSS with critical styles only */
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+/* Critical base styles */
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    font-family: "Inter", sans-serif;
+    color: #333;
+    background: #f8f9fa;
+    line-height: 1.6;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+  }
 }
 
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 80px; /* Accounts for fixed navbar height */
+/* Performance utilities */
+@layer utilities {
+  .gpu-accelerated {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+  
+  .smooth-scroll {
+    scroll-behavior: smooth;
+  }
+  
+  .content-visibility-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: 200px;
+  }
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-  font-family: "Inter", sans-serif;
-}
-
-body {
-  color: #333;
-  background: #f8f9fa;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-/* Removed dark mode preference to ensure consistent styling */
-
-/* Floating buttons are now handled with Tailwind classes in the component */
-
-/* Smooth scroll enhancements */
+/* Reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
-/* Custom smooth scroll utility classes */
-.smooth-scroll {
-  scroll-behavior: smooth;
-}
-
-.scroll-snap-y {
-  scroll-snap-type: y mandatory;
-}
-
-.scroll-snap-start {
-  scroll-snap-align: start;
-}
-
-/* Enhanced scroll animations */
+/* Critical animations only */
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translate3d(0, 30px, 0);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
-.animate-fade-in-up {
-  animation: fadeInUp 0.6s ease-out forwards;
-}
-
-/* Scroll-triggered animations */
 .scroll-animate {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transform: translate3d(0, 20px, 0);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .scroll-animate.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
 }
 
-/* Add padding to the bottom of the page to prevent floating buttons from covering content */
+/* Layout optimization */
 footer {
-  padding-bottom: 80px; /* Extra padding at the bottom of the footer */
+  padding-bottom: 80px;
 }
