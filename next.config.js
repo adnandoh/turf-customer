@@ -1,10 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Basic configuration only to fix build issues
+  // Basic configuration for Next.js 15
   trailingSlash: true,
   poweredByHeader: false,
   reactStrictMode: true,
-  swcMinify: true,
+  // swcMinify is now default in Next.js 15, no need to specify
 
   // Simplified image configuration
   images: {
