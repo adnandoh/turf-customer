@@ -1,28 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Enforce trailing slashes
+  // Basic configuration only to fix build issues
   trailingSlash: true,
-
-  // Compiler optimizations
-  compiler: {
-    removeConsole: process.env.NODE_ENV === 'production',
-  },
-
-  // Performance optimizations
   poweredByHeader: false,
   reactStrictMode: true,
   swcMinify: true,
-  
-  // Experimental features for better performance
-  experimental: {
-    optimizePackageImports: ['lucide-react', 'react-icons'],
-  },
 
-  // Image optimization
+  // Simplified image configuration
   images: {
-    formats: ['image/webp', 'image/avif'],
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     remotePatterns: [
       {
         protocol: 'https',
@@ -31,12 +16,9 @@ const nextConfig = {
         pathname: '/**',
       },
     ],
-    minimumCacheTTL: 31536000, // 1 year cache
-    dangerouslyAllowSVG: true,
-    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
 
-  // Redirects to enforce www subdomain
+  // Basic redirects
   async redirects() {
     return [
       {
@@ -49,46 +31,6 @@ const nextConfig = {
         ],
         destination: 'https://www.turfngroup.com/:path*',
         permanent: true,
-      },
-    ]
-  },
-
-  // Security headers
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'X-Frame-Options',
-            value: 'DENY',
-          },
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
-          },
-          {
-            key: 'Referrer-Policy',
-            value: 'origin-when-cross-origin',
-          },
-          {
-            key: 'X-DNS-Prefetch-Control',
-            value: 'on',
-          },
-        ],
-      },
-      {
-        source: '/robots.txt',
-        headers: [
-          {
-            key: 'Content-Type',
-            value: 'text/plain',
-          },
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400',
-          },
-        ],
       },
     ]
   },
