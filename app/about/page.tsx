@@ -4,7 +4,7 @@ import { Target, Heart, Award, Users } from 'lucide-react'
 import Breadcrumb from '../components/Breadcrumb'
 
 export const metadata: Metadata = {
-  title: 'About Driver On Hire | Our Journey and Vision',
+  title: 'About Turf N Group | Our Journey and Vision',
   description: 'Turf N Group Founded in Lonavala 2025 is now lonavala\'s first of it\'s Turf near Railway, waterwall, resort, market, and near villas with mountain view.',
 }
 
