@@ -62,37 +62,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* Section 2: What Drives Us - Image Left, Content Right */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Image Left */}
-            <div className="order-2 lg:order-1">
-              <div className="relative h-96 w-full rounded-2xl overflow-hidden shadow-2xl">
-                <Image
-                  src="/gallery/turf Surrounded by Hills.png"
-                  alt="Sports turf surrounded by beautiful hills and mountains in Lonavala"
-                  fill
-                  className="object-cover w-full h-full"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
-            </div>
-            {/* Content Right */}
-            <div className="order-1 lg:order-2">
-              <div className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-6">
-                WHAT DRIVES US
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                What drives Us
-              </h2>
-              <p className="text-lg text-gray-600 leading-relaxed">
-                Our mission is simple: make quality sports turf accessible around the clock. We envision becoming Western India's go-to hub where passion for play meets world-class convenience.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* Section 3: Why Players Choose Us - Content Left, Image Right */}
       <section className="py-20 bg-white">
